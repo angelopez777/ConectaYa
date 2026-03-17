@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
 
-// Verifica que 'authController.registrarUsuario' exista antes de asignarlo
-router.post('/registro', authController.registrarUsuario);
-router.post('/generar-codigo', authController.generarCodigo);
+// 📥 IMPORTACIÓN: Traemos las funciones del controlador
+const { login, registrar, obtenerPerfil } = require('../controllers/authController');
+    
+// 🚩 DEFINICIÓN DE RUTAS
+router.post('/login', login);      // Ruta para iniciar sesión
+router.post('/registrar', registrar); // Ruta para crear cuenta
+router.get('/perfil/:id', obtenerPerfil); // Ruta para obtener perfil de usuario
 
 module.exports = router;
