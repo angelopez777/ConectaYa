@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+instance/
+.venv/
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Herramientas y ejecutables
+*.exe
+*.zip
+apache-jmeter-*/
+Postman*/
+
+# VS Code
+.vscode/
