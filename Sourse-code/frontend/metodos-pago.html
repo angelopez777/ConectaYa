@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa - Cuentas Bancarias</title>
+    <link rel="stylesheet" href="css/metodos-pago.css">
+</head>
+<body>
+
+    <div class="payment-container">
+        <header class="payment-header">
+            <a href="perfil-usuario.html" class="back-btn">←</a>
+            <h1 class="title">Cuentas bancarias</h1>
+        </header>
+
+        <p class="instruction">Selecciona tu método de pago:</p>
+
+        <form class="payment-form">
+            <div class="options-list">
+                <label class="payment-option">
+                    <input type="radio" name="method" value="tarjeta">
+                    <div class="option-info">
+                        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/633/633611.png" alt="Tarjeta"></div>
+                        <span>Tarjeta debito o credito</span>
+                    </div>
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="method" value="pse">
+                    <div class="option-info">
+                        <div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Logo_PSE.png" alt="PSE"></div>
+                        <span>PSE</span>
+                    </div>
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="method" value="nequi">
+                    <div class="option-info">
+                        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/10149/10149458.png" alt="Nequi"></div>
+                        <span>Nequi</span>
+                    </div>
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="method" value="daviplata">
+                    <div class="option-info">
+                        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" alt="Daviplata"></div>
+                        <span>Daviplata</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="skip-link" id="openModal">OMITIR</button>
+                <button type="submit" class="btn-next">Siguiente</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="paymentModal" class="modal-overlay">
+        <div class="modal-content">
+            <p class="modal-text">No podrás solicitar un servicio sin añadir un método de pago.</p>
+            <div class="modal-buttons">
+                <button class="btn-modal-primary" id="closeModal">Agregar método de pago ahora</button>
+                <a href="inicio-cliente.html" class="btn-modal-secondary">Hazlo más tarde</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/metodos-pago.js"></script>
+</body>
+</html>

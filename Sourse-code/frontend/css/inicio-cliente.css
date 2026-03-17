@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Banner superior azul */
+.location-banner {
+    background-color: #5d5dff;
+    padding: 20px;
+    position: relative;
+    padding-top: 40px;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    cursor: pointer;
+}
+
+.banner-content p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.btn-activate {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Buscador */
+.search-section {
+    padding: 20px;
+}
+
+.search-bar {
+    width: 100%;
+    background-color: #2e2e2e;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Cuadrícula de servicios */
+.services-section {
+    padding: 0 20px 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.icon-box {
+    width: 65px;
+    height: 65px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.icon-box img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.service-item span {
+    font-size: 12px;
+    line-height: 1.2;
+}

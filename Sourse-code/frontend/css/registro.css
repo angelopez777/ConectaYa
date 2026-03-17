@@ -1,0 +1,78 @@
+/* DISEÑO OSCURO PARA REGISTRO (Basado en image_12ab5a.png) */
+body {
+    margin: 0;
+    background-color: #121212;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 360px;
+    padding: 20px;
+}
+
+.register-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 14px;
+    color: #aaa;
+}
+
+input {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 14px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+}
+
+.btn-next {
+    background-color: #000;
+    color: white;
+    border: 1px solid #333;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-next:hover {
+    background-color: #111;
+}

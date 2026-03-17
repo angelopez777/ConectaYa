@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa - Verificación</title>
+    <link rel="stylesheet" href="css/verificacion.css">
+</head>
+<body>
+
+    <div class="verify-container">
+        <header class="verify-header">
+            <a href="registro.html" class="back-btn">←</a>
+            <h1 class="title">Verificación</h1>
+        </header>
+
+        <p class="instruction">Introduzca el código de 4 dígitos que le enviamos en</p>
+        <p class="user-email">(Correo escrito)</p>
+        
+        <form class="verify-form" action="creacion-perfil.html">
+            <div class="code-inputs">
+                <input type="text" maxlength="1" placeholder="0" required>
+                <input type="text" maxlength="1" placeholder="0" required>
+                <input type="text" maxlength="1" placeholder="0" required>
+                <input type="text" maxlength="1" placeholder="0" required>
+            </div>
+
+            <a href="#" class="resend-link">Reenviar Código</a>
+
+            <button type="submit" class="btn-next">Siguiente</button>
+        </form>
+    </div>
+
+    <script src="js/verificacion.js"></script>
+</body>
+</html>

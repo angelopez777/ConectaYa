@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa - Creación de perfil</title>
+    <link rel="stylesheet" href="css/creacion-perfil.css">
+</head>
+<body>
+
+    <div class="profile-container">
+        <header class="profile-header">
+            <h1 class="title">Creación de perfil</h1>
+            <p class="subtitle">Selección de tipo de usuario:</p>
+        </header>
+
+        <form class="profile-form">
+            <div class="options-group">
+                <label class="option-item">
+                    <input type="radio" name="user-type" value="cliente" required>
+                    <div class="option-content">
+                        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Usuario"></div>
+                        <span>Usuario / cliente</span>
+                    </div>
+                </label>
+
+                <label class="option-item">
+                    <input type="radio" name="user-type" value="trabajador">
+                    <div class="option-content">
+                        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995471.png" alt="Trabajador"></div>
+                        <span>Trabajador</span>
+                    </div>
+                </label>
+
+                <label class="option-item">
+                    <input type="radio" name="user-type" value="empresa">
+                    <div class="option-content">
+                        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2761/2761008.png" alt="Empresa"></div>
+                        <span>Empresa</span>
+                    </div>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-next">Siguiente</button>
+        </form>
+    </div>
+
+    <script src="js/creacion-perfil.js"></script>
+</body>
+</html>

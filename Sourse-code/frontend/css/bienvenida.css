@@ -1,0 +1,70 @@
+/* Configuración Base */
+body {
+    margin: 0;
+    background-color: #121212;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+}
+
+.splash-container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* Logo */
+.logo-box img {
+    width: 280px; /* Esto hará que vuelva a su tamaño normal */
+    height: auto;
+}
+
+/* Contenedor del Slogan Centrado */
+.slogan-container {
+    border: 1px solid #444;
+    border-radius: 50px;
+    padding: 15px 30px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
+    gap: 15px;               /* Espacio entre texto y escudo */
+    background-color: rgba(255, 255, 255, 0.05);
+    width: fit-content;      /* Se ajusta al contenido */
+    min-width: 280px;
+}
+
+.slogan-text {
+    font-size: 16px;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+/* Botón Empezar */
+.btn-empezar {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #333;
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s ease;
+}
+
+.btn-empezar:hover {
+    background-color: #1a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}

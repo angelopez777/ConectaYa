@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa - Perfil Usuario</title>
+    <link rel="stylesheet" href="css/perfil-usuario.css">
+</head>
+<body>
+
+    <div class="profile-container">
+        <header class="profile-header">
+            <a href="creacion-perfil.html" class="back-btn">←</a>
+            <h1 class="title">Creación de perfil</h1>
+        </header>
+
+        <form class="profile-form" action="metodos-pago.html">
+            <div class="input-group">
+                <label>Dirección o ubicación.</label>
+                <input type="text" placeholder="Ingresa tu dirección" required>
+            </div>
+
+            <div class="photo-section">
+                <p class="photo-label">Seleccionar o tomar foto de perfil (Opcional)</p>
+                <div class="photo-placeholder">
+                    <label for="photo-upload" class="photo-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Perfil" id="preview">
+                        <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-next">Siguiente</button>
+        </form>
+    </div>
+
+    <script src="js/perfil-usuario.js"></script>
+</body>
+</html>

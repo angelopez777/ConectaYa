@@ -1,0 +1,91 @@
+/* DISEÑO DE VERIFICACIÓN (image_12a37e.png) */
+body {
+    margin: 0;
+    background-color: #121212;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.verify-container {
+    width: 100%;
+    max-width: 360px;
+    padding: 20px;
+}
+
+.verify-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.instruction {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de los 4 números */
+.code-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.code-inputs input {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #555; /* Línea abajo como en la imagen */
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    outline: none;
+}
+
+.code-inputs input:focus {
+    border-bottom-color: #4a90e2;
+}
+
+.resend-link {
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.btn-next {
+    width: 100%;
+    background-color: #000;
+    color: white;
+    border: 1px solid #333;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
