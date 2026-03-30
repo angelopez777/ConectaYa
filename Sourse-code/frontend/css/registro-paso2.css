@@ -1,0 +1,117 @@
+/* =========================================
+   ESTILO: REGISTRO PASO 2 (CORREGIDO)
+   Ajuste: Botón interno y espaciado limpio
+   ========================================= */
+
+:root {
+    --bg-negro: #0a0a0c;
+    --tarjeta-bg: #121214;
+    --morado-neon: #a855f7;
+    --morado-glow: rgba(168, 85, 247, 0.4);
+    --texto-blanco: #ffffff;
+    --texto-gris: #94a3b8;
+    --input-fill: #1a1a1e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: var(--bg-negro);
+    color: var(--texto-blanco);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* --- TARJETA --- */
+.card-registro {
+    background-color: var(--tarjeta-bg);
+    border-radius: 24px;
+    padding: 55px 45px 45px 45px; /* Más espacio arriba para el botón volver */
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* --- BOTÓN VOLVER INTERNO --- */
+.btn-volver-interno {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    color: var(--texto-gris);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-volver-interno:hover { color: var(--texto-blanco); }
+
+/* --- CABECERA --- */
+.header-registro { margin-bottom: 35px; }
+
+.logo-texto { font-size: 2.2rem; font-weight: 800; margin-bottom: 25px; }
+.logo-texto span { color: var(--morado-neon); }
+
+.tagline { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; display: block; }
+.instruccion { color: var(--texto-gris); font-size: 0.9rem; line-height: 1.4; }
+
+/* --- ROLES --- */
+.opciones-grid { display: flex; flex-direction: column; gap: 15px; margin-bottom: 35px; }
+.tarjeta-rol { cursor: pointer; display: block; }
+.tarjeta-rol input { display: none; }
+
+.rol-diseno {
+    background-color: var(--input-fill);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+/* ICONOS SECCIÓN */
+.icon-rol {
+    width: 45px; height: 45px;
+    background: rgba(168, 85, 247, 0.1);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--morado-neon);
+}
+
+.info-rol h3 { font-size: 1rem; margin-bottom: 3px; }
+.info-rol p { font-size: 0.8rem; color: var(--texto-gris); }
+
+/* ESTADO SELECCIONADO */
+.tarjeta-rol input:checked + .rol-diseno {
+    border-color: var(--morado-neon);
+    background: rgba(168, 85, 247, 0.05);
+    box-shadow: 0 0 15px var(--morado-glow);
+}
+
+/* BOTÓN SIGUIENTE */
+.btn-siguiente {
+    width: 100%;
+    background-color: var(--morado-neon);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px var(--morado-glow);
+    transition: transform 0.2s;
+}
+
+.btn-siguiente:hover { transform: translateY(-2px); }

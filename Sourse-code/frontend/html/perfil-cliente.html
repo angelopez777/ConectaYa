@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa | Perfil Cliente</title>
+
+    <link rel="stylesheet" href="../css/perfil-cliente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="card-perfil">
+        <a href="registro-paso2.html" class="btn-atras">
+            <i class="fas fa-chevron-left"></i> Volver
+        </a>
+
+        <header class="header-perfil">
+            <h1 class="logo-texto">Conecta<span>Ya</span></h1>
+            <h2 class="subtitulo">Perfil de Cliente</h2>
+            <p class="instruccion">Personaliza tu cuenta para solicitar servicios</p>
+        </header>
+
+        <form action="../../backend/registro/procesar-perfil-cliente.php" method="POST" enctype="multipart/form-data">
+
+            <div class="avatar-section">
+                <div class="avatar-circle" id="avatar-container">
+                    <i class="fas fa-user-circle" id="icon-placeholder"></i>
+                    <img src="" alt="Previsualización" id="img-preview" style="display: none;">
+                </div>
+
+                <label for="foto-input" class="btn-subir-foto">
+                    <i class="fas fa-camera"></i> Cambiar Foto
+                </label>
+                <input type="file" name="foto" id="foto-input" accept="image/*" hidden>
+            </div>
+
+            <div class="input-block">
+                <label>Dirección de residencia o entrega</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" name="direccion" placeholder="Ej: Calle 20 #15-30, Tunja" required
+                        autocomplete="address-line1">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-finalizar">Continuar a Métodos de Pago</button>
+        </form>
+    </main>
+
+    <script src="../js/perfil-cliente.js"></script>
+</body>
+
+</html>

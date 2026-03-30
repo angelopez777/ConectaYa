@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | ConectaYa</title>
+    
+    <link rel="stylesheet" href="../css/registro.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="card-registro">
+        <a href="../index.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+
+        <header class="header-registro">
+            <h1 class="logo-conecta">Conecta<span>Ya</span></h1>
+            <p>Crea tu cuenta profesional hoy</p>
+        </header>
+
+        <form action="../../backend/registro/procesar-paso1.php" method="POST">
+            
+            <div class="input-group">
+                <label>Nombre Completo</label>
+                <div class="input-container">
+                    <i class="fas fa-user icon-form"></i>
+                    <input type="text" name="nombre" required placeholder="Ej: Juan Pérez">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Número de Teléfono</label>
+                <div class="input-container">
+                    <i class="fas fa-phone icon-form"></i>
+                    <input type="tel" name="telefono" required placeholder="Ej: 300 123 4567">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Correo Electrónico</label>
+                <div class="input-container">
+                    <i class="fas fa-envelope icon-form"></i>
+                    <input type="email" name="correo" required placeholder="usuario@correo.com">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Contraseña</label>
+                <div class="input-container">
+                    <i class="fas fa-lock icon-form"></i>
+                    <input type="password" id="pass_1" name="password" required placeholder="Crea una clave segura">
+                    <i class="fas fa-eye toggle-eye" onclick="verPassword('pass_1', this)"></i>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Confirmar Contraseña</label>
+                <div class="input-container">
+                    <i class="fas fa-shield-alt icon-form"></i>
+                    <input type="password" id="pass_2" name="confirm_password" required placeholder="Repite tu clave">
+                    <i class="fas fa-eye toggle-eye" onclick="verPassword('pass_2', this)"></i>
+                </div>
+            </div>
+
+            <button type="submit" name="registrar" class="btn-finalizar">Finalizar Registro</button>
+            
+            <p class="footer-link">
+                ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="../js/registro-paso1.js"></script>
+</body>
+</html>

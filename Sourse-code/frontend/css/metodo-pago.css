@@ -1,0 +1,119 @@
+/* ESTILOS PARA MÉTODO DE PAGO - CONECTAYA */
+:root {
+    --primario: #a855f7;
+    --secundario: #7c3aed;
+    --fondo: #0a0a0c;
+    --tarjeta: #121214;
+    --borde: rgba(168, 85, 247, 0.3);
+}
+
+body {
+    background-color: var(--fondo);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.tarjeta-pago {
+    background: var(--tarjeta);
+    width: 90%;
+    max-width: 440px;
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo span { color: var(--primario); }
+.instruccion { color: #94a3b8; font-size: 0.85rem; margin-bottom: 30px; }
+
+/* CONTENEDOR DE RADIOS */
+.contenedor-opciones { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
+
+.tarjeta-opcion input { display: none; }
+
+.diseno-opcion {
+    background: #1a1a1c;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.diseno-opcion i { font-size: 1.4rem; color: #94a3b8; margin-right: 15px; }
+.texto { flex-grow: 1; text-align: left; }
+.texto strong { display: block; font-size: 0.9rem; }
+.texto span { font-size: 0.75rem; color: #94a3b8; }
+
+/* SELECCIONADO */
+.tarjeta-opcion input:checked + .diseno-opcion {
+    border-color: var(--primario);
+    background: rgba(168, 85, 247, 0.05);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+/* CUADRO NEÓN */
+.detalles-seguridad {
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: left;
+    background: #000;
+}
+
+.detalles-seguridad legend {
+    color: var(--primario);
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0 10px;
+}
+
+.campo { margin-bottom: 15px; }
+.campo label { display: block; font-size: 0.7rem; color: #94a3b8; margin-bottom: 5px; }
+
+input[type="text"] {
+    width: 100%;
+    background: #1a1a1c;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.fila-doble { display: flex; gap: 10px; }
+
+.btn-submit {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(90deg, var(--primario), var(--secundario));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+}

@@ -1,0 +1,158 @@
+/* =========================================
+   ESTILO UNIFICADO: DARK NEÓN (FONDO NEGRO)
+   COHERENCIA TOTAL CON INDEX.HTML
+   ========================================= */
+
+:root {
+    --bg-black: #0a0a0c; /* El negro exacto de tu index */
+    --primary-neon: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+    --glass-card: rgba(255, 255, 255, 0.02); /* Tarjeta casi invisible para no romper el negro */
+    --border-light: rgba(255, 255, 255, 0.08);
+    --text-bright: #ffffff;
+    --text-dim: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-black); /* Fondo negro solicitado */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Un ligero resplandor en la esquina para dar profundidad sin quitar el negro */
+    background: radial-gradient(circle at 0% 0%, #16161d 0%, #0a0a0c 50%);
+}
+
+.card-login {
+    background: var(--glass-card);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+}
+
+/* --- BOTÓN VOLVER --- */
+.btn-volver {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.btn-volver:hover { color: #a855f7; }
+
+.header-login {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo-conecta {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    letter-spacing: -1px;
+}
+
+/* Propiedad background-clip para el degradado del logo */
+.logo-conecta span {
+    background: var(--primary-neon);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- FORMULARIO --- */
+.input-group { margin-bottom: 22px; }
+
+.input-group label {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container i.icon-main {
+    position: absolute;
+    left: 15px;
+    color: #a855f7;
+    font-size: 0.9rem;
+}
+
+.input-container input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Input más oscuro para el fondo negro */
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 14px 45px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-container input:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 15px;
+    color: var(--text-dim);
+    cursor: pointer;
+}
+
+/* --- BOTÓN PRINCIPAL --- */
+.btn-entrar {
+    width: 100%;
+    background: var(--primary-neon);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-entrar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+}
+
+.footer-login {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.footer-login a {
+    color: #a855f7;
+    text-decoration: none;
+    font-weight: 600;
+}

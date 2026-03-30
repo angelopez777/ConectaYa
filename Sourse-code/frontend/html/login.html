@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ConectaYa</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="card-login">
+        <a href="../index.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+
+        <div class="header-login">
+            <h1 class="logo-conecta">Conecta<span>Ya</span></h1>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 8px;">Inicia sesión en tu cuenta</p>
+        </div>
+
+        <form action="../../backend/login-proceso.php" method="POST">
+            <div class="input-group">
+                <label>Correo Electrónico</label>
+                <div class="input-container">
+                    <i class="fas fa-envelope icon-main"></i>
+                    <input type="email" name="correo" required placeholder="tu@correo.com">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Contraseña</label>
+                <div class="input-container">
+                    <i class="fas fa-lock icon-main"></i>
+                    <input type="password" id="input_pass" name="password" required placeholder="••••••••">
+                    <i class="fas fa-eye toggle-pass" id="eye_toggle" onclick="verClave()"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-entrar">Entrar a ConectaYa</button>
+            
+            <p class="footer-login">
+                ¿No tienes cuenta? <a href="registro.html">Regístrate</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>

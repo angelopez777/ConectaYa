@@ -1,0 +1,88 @@
+/* DISEÑO NEÓN CONECTAYA - DESDE CERO */
+:root {
+    --neon-color: #a855f7;
+    --dark-bg: #0a0a0c;
+    --card-bg: #121214;
+    --input-bg: #1a1a1c;
+    --gray-text: #94a3b8;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main-wrapper { padding: 40px 20px; width: 100%; max-width: 500px; }
+
+.form-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+/* CONTENEDORES NEÓN */
+.neon-container {
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #000;
+}
+
+.legend-neon {
+    color: var(--neon-color);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0 10px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* DÍAS */
+.days-flex { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.day-item {
+    background: var(--input-bg);
+    width: 35px; height: 35px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; font-size: 0.8rem; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.day-item:has(input:checked) {
+    background: var(--neon-color);
+    box-shadow: 0 0 15px var(--neon-color);
+    border: none;
+}
+.day-item input { display: none; }
+
+/* INPUTS OSCUROS */
+.input-dark {
+    background: var(--input-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white; padding: 12px; border-radius: 10px; width: 100%;
+}
+
+.row-dinamica { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
+.time-box { flex: 1; display: flex; align-items: center; gap: 5px; font-size: 0.8rem; }
+.flex-3 { flex: 3; }
+.flex-1 { flex: 1; }
+
+.btn-add-item {
+    background: transparent; border: 1px dashed var(--neon-color);
+    color: var(--neon-color); width: 100%; padding: 10px;
+    border-radius: 10px; cursor: pointer; font-size: 0.8rem;
+}
+
+.btn-main-neon {
+    width: 100%; padding: 18px; border-radius: 15px; border: none;
+    background: linear-gradient(90deg, #a855f7, #7c3aed);
+    color: white; font-weight: bold; cursor: pointer;
+    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+}
+
+.btn-remove { background: #ef4444; border: none; color: white; border-radius: 5px; cursor: pointer; padding: 5px 10px; }

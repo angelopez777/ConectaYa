@@ -1,0 +1,128 @@
+/* ESTILOS: perfil-cliente.css 
+    SOLUCIÓN: Fix Autocomplete & Dark Neon Design 
+*/
+
+:root {
+    --bg-oscuro: #0a0a0c;
+    --card-bg: #121214;
+    --neon-purple: #a855f7;
+    --neon-glow: rgba(168, 85, 247, 0.4);
+    --text-gray: #94a3b8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+    background-color: var(--bg-oscuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card-perfil {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    text-align: center;
+}
+
+/* --- BOTÓN VOLVER --- */
+.btn-atras {
+    position: absolute;
+    top: 25px; left: 25px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+.btn-atras:hover { color: var(--neon-purple); }
+
+/* --- CABECERA --- */
+.logo-texto { font-size: 2rem; color: white; margin-bottom: 5px; }
+.logo-texto span { color: var(--neon-purple); }
+.subtitulo { color: white; font-size: 1.2rem; margin-bottom: 5px; }
+.instruccion { color: var(--text-gray); font-size: 0.85rem; margin-bottom: 30px; }
+
+/* --- SECCIÓN AVATAR --- */
+.avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; }
+
+.avatar-circle {
+    width: 115px; height: 115px;
+    border-radius: 50%;
+    border: 2px solid var(--neon-purple);
+    background: #1a1a1e;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden; margin-bottom: 15px;
+    box-shadow: 0 0 15px var(--neon-glow);
+}
+
+.avatar-circle i { font-size: 3.5rem; color: #2a2a2e; }
+.avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+.btn-subir-foto {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-subir-foto:hover { background: var(--neon-purple); color: white; }
+
+/* --- INPUTS Y FIX AUTOCOMPLETADO --- */
+.input-block { text-align: left; margin-bottom: 25px; }
+.input-block label { color: var(--text-gray); font-size: 0.8rem; display: block; margin-bottom: 8px; }
+
+.input-wrapper {
+    background: #1a1a1e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.input-wrapper i { color: var(--neon-purple); }
+
+.input-wrapper input {
+    background: transparent !important; /* Forzamos transparencia */
+    border: none;
+    color: white !important;
+    outline: none;
+    width: 100%;
+}
+
+/* CRÍTICO: Evita que el cuadro se vuelva blanco al autocompletar */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a1e inset !important; /* Rellena con tu color oscuro */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* --- BOTÓN FINALIZAR --- */
+.btn-finalizar {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #a855f7, #7c3aed);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px var(--neon-glow);
+    transition: 0.3s;
+}
+.btn-finalizar:hover { transform: translateY(-2px); filter: brightness(1.1); }

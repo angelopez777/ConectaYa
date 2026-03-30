@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ConectaYa | Términos</title>
+    <link rel="stylesheet" href="../css/estilos-perfiles.css">
+</head>
+<body>
+    <div class="card-registro">
+        <div class="header-registro">
+            <div class="icono-final">
+                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" style="filter: invert(1); width: 60px;">
+            </div>
+        </div>
+
+        <p class="texto-legal">
+            Al oprimir el botón de "Siguiente", aceptas los <b>Términos de uso</b> de ConectaYa y la <b>Política de privacidad</b>.
+        </p>
+
+        <form action="../../backend/registro/finalizar-perfil.php" method="POST">
+            <div class="check-group">
+                <input type="checkbox" id="acepto" name="acepto" required>
+                <label for="acepto">Confirmo que tengo al menos 18 años y acepto los términos.</label>
+            </div>
+            <button type="submit" class="btn-siguiente">Finalizar Registro</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+/* /frontend/css/estilos.css 
+Ajuste de precisión para Buscador y Navegación
+*/
+
+:root {
+    --fondo: #0a0a0b;
+    --texto: #ffffff;
+    --texto-dim: #94a3b8;
+    --primario: #9d4edd;
+    --secundario: #48cae4;
+    --gradiente: linear-gradient(135deg, #9d4edd 0%, #48cae4 100%);
+    --card-bg: #111114;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+}
+
+.contenedor { width: 90%; max-width: 1100px; margin: 0 auto; }
+
+/* HEADER CORREGIDO */
+header { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.header-wrapper { display: flex; justify-content: space-between; align-items: center; }
+
+.logo-area { display: flex; align-items: center; gap: 10px; }
+.logo-area h1 { font-size: 1.4rem; font-weight: 800; margin: 0; }
+.logo-area span { color: var(--primario); }
+
+.nav-principal { display: flex; align-items: center; gap: 25px; }
+.nav-link { text-decoration: none; color: var(--texto-dim); font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+.nav-link:hover { color: var(--texto); }
+
+.btn-gradiente {
+    background: var(--gradiente);
+    color: white; padding: 10px 22px; border-radius: 12px;
+    text-decoration: none; font-weight: 600; font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(157, 78, 221, 0.2);
+}
+
+/* SECCIÓN HERO */
+.hero { padding: 80px 0 60px; text-align: center; position: relative; }
+.titulo-principal { font-size: 3.2rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+.subtitulo { color: var(--texto-dim); font-size: 1rem; margin-bottom: 35px; }
+
+/* BUSCADOR UNIFICADO (CORRECCIÓN DE LA CAPTURA) */
+.search-wrapper { width: 100%; max-width: 600px; margin: 0 auto; }
+
+.search-box {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    display: flex;
+    padding: 6px; /* Espacio interno uniforme */
+    align-items: center;
+    transition: 0.3s;
+}
+
+.search-box:focus-within {
+    border-color: var(--primario);
+    box-shadow: 0 0 0 4px rgba(157, 78, 221, 0.1);
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.search-icon { color: var(--texto-dim); opacity: 0.5; }
+
+.search-box input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 12px 15px;
+    color: white;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-buscar {
+    background: var(--primario);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 14px; /* Un poco menos que el contenedor para que encaje */
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-buscar:hover {
+    background: var(--secundario);
+    transform: translateY(-1px);
+}
+
+/* TARJETAS DE CATEGORÍA */
+.categorias { padding: 40px 0; }
+.grid-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.card-cat {
+    background: var(--card-bg);
+    padding: 30px 15px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.02);
+    transition: 0.3s;
+}
+
+.card-cat:hover {
+    transform: translateY(-5px);
+    border-color: var(--primario);
+}
+
+.icon-shape {
+    width: 50px; height: 50px; margin: 0 auto 15px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+}
+
+/* Colores de iconos */
+.ic-valoracion { color: #f43f5e; background: rgba(244, 63, 94, 0.1); }
+.ic-tecnologia { color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+.ic-mascotas { color: #a855f7; background: rgba(168, 85, 247, 0.1); }
+
+.card-cat p { font-weight: 600; font-size: 0.85rem; }
+
+/* Decoración */
+.blur-bg {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 400px; height: 400px; background: var(--primario);
+    filter: blur(180px); opacity: 0.1; z-index: -1;
+}
