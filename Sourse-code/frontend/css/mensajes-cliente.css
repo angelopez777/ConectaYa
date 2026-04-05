@@ -1,0 +1,173 @@
+/* CONTENEDOR MAESTRO */
+.chat-wrapper-premium {
+    display: flex;
+    width: 95%;
+    height: 85vh;
+    background: #121214;
+    border-radius: 20px;
+    border: 1px solid #1e1e22;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    margin: auto;
+}
+
+/* PANEL DE CONTACTOS (IZQUIERDA) */
+.contacts-panel {
+    width: 350px;
+    background: #1a1a1c;
+    border-right: 1px solid #2d2d32;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-box-container { padding: 20px; border-bottom: 1px solid #2d2d32; }
+.search-bar {
+    background: #0a0a0c;
+    border: 1px solid #2d2d32;
+    border-radius: 12px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    width: 100%;
+}
+.search-bar i { color: #a855f7; }
+
+.contacts-scroll { flex: 1; overflow-y: auto; }
+
+/* VENTANA DE CHAT (DERECHA) */
+.chat-window { flex: 1; display: flex; flex-direction: column; background: #0a0a0c; }
+
+.chat-header {
+    padding: 15px 30px;
+    background: #1a1a1c;
+    border-bottom: 1px solid #2d2d32;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-info h2 { font-size: 1.1rem; color: #fff; margin-bottom: 4px; }
+.status-indicator { font-size: 0.8rem; color: #888; display: flex; align-items: center; gap: 8px; }
+.status-indicator.online i { color: #a855f7; text-shadow: 0 0 10px #a855f7; }
+
+.messages-display {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ÁREA DE ENTRADA */
+.chat-input-area {
+    padding: 20px 30px;
+    background: #1a1a1c;
+    border-top: 1px solid #2d2d32;
+}
+
+.input-form { display: flex; gap: 15px; align-items: center; }
+
+.btn-neon-icon {
+    background: transparent;
+    border: none;
+    color: #a855f7;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.btn-neon-icon:hover { transform: scale(1.1); text-shadow: 0 0 10px #a855f7; }
+
+.field-wrapper { flex: 1; }
+.field-wrapper input {
+    width: 100%;
+    background: #0a0a0c;
+    border: 1px solid #2d2d32;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #fff;
+    outline: none;
+}
+.field-wrapper input:focus { border-color: #a855f7; box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
+
+.send-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #a855f7;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+.send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* BURBUJAS */
+.bubble { max-width: 70%; padding: 12px 18px; border-radius: 15px; font-size: 0.95rem; }
+.bubble.me { 
+    align-self: flex-end; 
+    background: #a855f7; 
+    color: #fff; 
+    border-bottom-right-radius: 2px;
+}
+.bubble.them { 
+    align-self: flex-start; 
+    background: #1e1e22; 
+    color: #eee; 
+    border-bottom-left-radius: 2px;
+}
+
+/* ... (Se mantienen los estilos anteriores del chat) ... */
+
+/* SECCIÓN INFERIOR SIDEBAR */
+.sidebar-bottom {
+    padding: 20px;
+    border-top: 1px solid #1e1e22;
+}
+
+.role-switcher {
+    margin-bottom: 15px; /* Separación del botón de logout */
+}
+
+.btn-role-neon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(168, 85, 247, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 10px;
+    color: #a855f7;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-role-neon:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: #a855f7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    color: #fff;
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ef4444; /* Rojo para salida */
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 5px 10px;
+}
+
+.logout-link:hover {
+    color: #ff6b6b;
+}

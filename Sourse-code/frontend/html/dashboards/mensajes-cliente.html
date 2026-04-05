@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes | ConectaYa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
+    <link rel="stylesheet" href="../../css/mensajes-cliente.css">
+</head>
+<body class="dark-theme">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <p class="menu-label">Principal</p>
+                <a href="inicio-cliente.html" class="menu-item">
+                    <i class="fas fa-home"></i> <span>Inicio</span>
+                </a>
+                <a href="dashboard-perfil-cliente.html" class="menu-item">
+                    <i class="fas fa-user"></i> <span>Mi Perfil</span>
+                </a>
+                <a href="mensajes-cliente.html" class="menu-item active">
+                    <i class="fas fa-envelope"></i> <span>Mensajes</span>
+                </a>
+                
+                <p class="menu-label">Gestión</p>
+                <a href="calendario-cliente.html" class="menu-item"><i class="fas fa-calendar-alt"></i> <span>Calendario</span></a>
+                <a href="contratos-cliente.html" class="menu-item"><i class="fas fa-file-invoice"></i> <span>Mis Contratos</span></a>
+                <a href="notificaciones.html" class="menu-item"><i class="fas fa-bell"></i> <span>Notificaciones</span></a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button class="btn-role" onclick="window.location.href='inicio-trabajador.html'">
+                    <i class="fas fa-exchange-alt"></i> Cambiar a Trabajador
+                </button>
+                <a href="../../../backend/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="chat-wrapper-premium">
+                <section class="contacts-panel">
+                    <div class="search-box-container">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="buscar-chat" placeholder="Buscar conversación...">
+                        </div>
+                    </div>
+                    <div id="lista-chats" class="contacts-scroll">
+                        <div class="status-msg">Cargando conversaciones...</div>
+                    </div>
+                </section>
+
+                <section class="chat-window">
+                    <header class="chat-header">
+                        <div class="chat-info">
+                            <h2 id="chat-receptor-nombre">Selecciona un chat</h2>
+                            <div id="status-text" class="status-indicator">
+                                <i class="fas fa-circle"></i> <span id="label-status">Desconectado</span>
+                            </div>
+                        </div>
+                        <button id="refresh-chat" class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
+                    </header>
+
+                    <div id="chat-box" class="messages-display">
+                        <div class="empty-state">
+                            <i class="fas fa-comments"></i>
+                            <p>Tus mensajes aparecerán aquí</p>
+                        </div>
+                    </div>
+
+                    <footer class="chat-input-area">
+                        <form id="form-mensaje" class="input-form">
+                            <input type="hidden" id="id_solicitud_actual">
+                            <input type="file" id="input-foto" accept="image/*" style="display: none;">
+                            
+                            <button type="button" id="btn-foto" class="btn-neon-icon">
+                                <i class="fas fa-camera"></i>
+                            </button>
+
+                            <div class="field-wrapper">
+                                <input type="text" id="input-contenido" placeholder="Escribe un mensaje..." autocomplete="off" disabled>
+                            </div>
+
+                            <button type="submit" id="btn-enviar" class="send-btn" disabled>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </footer>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/mensajes-cliente.js"></script>
+</body>
+</html>

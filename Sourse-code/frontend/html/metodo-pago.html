@@ -3,81 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConectaYa | Métodos de Pago</title>
-    
-    <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="stylesheet" href="../css/metodo-pago.css">
+    <title>ConectaYa | Método de Pago</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/metodo-pago.css">
 </head>
-<body>
+<body class="dark-theme">
 
-    <main class="wrapper-pago">
-        <section class="tarjeta-pago">
-            
-            <a href="#" class="btn-volver" id="link-regresar">
-                <i class="fas fa-chevron-left"></i> Volver
-            </a>
+    <main class="payment-card-premium">
+        <a href="#" id="btn-volver-dinamico" class="back-navigation">
+            <i class="fa-solid fa-chevron-left"></i> VOLVER
+        </a>
 
-            <header class="header-pago">
-                <h1 class="logo">Conecta<span>Ya</span></h1>
-                <h2 class="titulo-seccion">Método de Pago</h2>
-                <p class="instruccion">Configura cómo deseas gestionar tus transacciones seguras</p>
-            </header>
+        <header class="card-header">
+            <h1 class="logo-text">Conecta<span>Ya</span></h1>
+            <h2 class="section-title">Método de Pago</h2>
+        </header>
 
-            <form action="../../backend/procesar-pago.php" method="POST" id="form-pago">
-                
-                <div class="contenedor-opciones">
-                    <label class="tarjeta-opcion">
-                        <input type="radio" name="tipo_pago" value="transferencia" checked>
-                        <div class="diseno-opcion">
-                            <i class="fas fa-university"></i>
-                            <div class="texto">
-                                <strong>Transferencia</strong>
-                                <span>Nequi, Daviplata o Bancos</span>
-                            </div>
-                            <div class="radio-custom"></div>
-                        </div>
-                    </label>
+        <form id="form-pago">
+            <input type="hidden" name="metodo_pago" id="metodo_seleccionado" value="">
 
-                    <label class="tarjeta-opcion">
-                        <input type="radio" name="tipo_pago" value="tarjeta">
-                        <div class="diseno-opcion">
-                            <i class="fas fa-credit-card"></i>
-                            <div class="texto">
-                                <strong>Tarjeta</strong>
-                                <span>Débito o Crédito</span>
-                            </div>
-                            <div class="radio-custom"></div>
-                        </div>
-                    </label>
+            <div class="method-selector-area">
+                <div class="method-box" data-value="Transferencia">
+                    <div class="icon-pago">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div class="method-info">
+                        <h3>Transferencia</h3>
+                        <p>Nequi, Daviplata o Bancolombia</p>
+                    </div>
                 </div>
 
-                <fieldset class="detalles-seguridad">
-                    <legend>INFORMACIÓN DE CUENTA</legend>
-                    
-                    <div class="campo">
-                        <label>Número de identificación o cuenta</label>
-                        <input type="text" name="numero_cuenta" placeholder="Ej: 10102030" required>
+                <div class="method-box" data-value="Tarjeta">
+                    <div class="icon-pago">
+                        <i class="fa-solid fa-credit-card"></i>
                     </div>
-
-                    <div class="fila-doble">
-                        <div class="campo">
-                            <label>Banco / Entidad</label>
-                            <input type="text" name="entidad" placeholder="Ej: Nequi">
-                        </div>
-                        <div class="campo">
-                            <label>Titular</label>
-                            <input type="text" name="titular" placeholder="Nombre completo">
-                        </div>
+                    <div class="method-info">
+                        <h3>Tarjeta</h3>
+                        <p>Débito o Crédito</p>
                     </div>
-                </fieldset>
+                </div>
+            </div>
 
-                <button type="submit" class="btn-submit">
-                    Finalizar y Guardar <i class="fas fa-check-circle"></i>
-                </button>
+            <span class="form-section-label">Información de la cuenta</span>
 
-            </form>
-        </section>
+            <div class="input-group">
+                <label>Número de cuenta o celular</label>
+                <div class="input-wrapper">
+                    <input type="text" name="numero_cuenta" placeholder="Ej: 311..." required>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Banco / Entidad</label>
+                    <div class="input-wrapper">
+                        <input type="text" name="banco_entidad" placeholder="Ej: Nequi" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Titular</label>
+                    <div class="input-wrapper">
+                        <input type="text" name="titular" placeholder="Nombre completo" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-finish-premium">Siguiente: Términos</button>
+        </form>
     </main>
 
     <script src="../js/metodo-pago.js"></script>

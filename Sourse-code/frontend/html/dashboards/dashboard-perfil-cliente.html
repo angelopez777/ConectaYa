@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa | Mi Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
+    <link rel="stylesheet" href="../../css/dashboard-perfil-cliente.css">
+</head>
+<body class="dark-theme">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
+            </div>
+            <nav class="sidebar-menu">
+                <p class="menu-label">Principal</p>
+                <a href="inicio-cliente.html" class="menu-item">
+                    <i class="fas fa-home"></i> <span>Inicio</span>
+                </a>
+                <a href="dashboard-perfil-cliente.html" class="menu-item active">
+                    <i class="fas fa-user"></i> <span>Mi Perfil</span>
+                </a>
+                <a href="mensajes-cliente.html" class="menu-item">
+                    <i class="fas fa-envelope"></i> <span>Mensajes</span>
+                </a>
+                
+                <p class="menu-label">Gestión</p>
+                <a href="calendario-cliente.html" class="menu-item"><i class="fas fa-calendar-alt"></i> <span>Calendario</span></a>
+                <a href="contratos-cliente.html" class="menu-item"><i class="fas fa-file-invoice"></i> <span>Mis Contratos</span></a>
+                <a href="notificaciones.html" class="menu-item"><i class="fas fa-bell"></i> <span>Notificaciones</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+                <button class="btn-role" onclick="window.location.href='inicio-trabajador.html'">
+                    <i class="fas fa-exchange-alt"></i> Cambiar a Trabajador
+                </button>
+                <a href="../../../backend/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1 class="welcome-text">Mi <span class="neon-text">Perfil</span></h1>
+            </header>
+
+            <div class="profile-layout">
+                <div class="premium-card">
+                    <div class="profile-info-main">
+                        <div class="avatar-circle">
+                            <img id="perfil-img" alt="Cargando..." style="background-color: #1a1a1c; width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <div class="profile-text">
+                            <h2 id="perfil-nombre">Cargando...</h2>
+                            <div class="stats-pills">
+                                <span class="pill"><i class="fas fa-star"></i> <span id="perfil-rating">0.0</span></span>
+                                <span class="pill"><i class="fas fa-tasks"></i> <span id="perfil-servicios">0</span> Solicitudes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="premium-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-id-card"></i> Datos de la Cuenta</h3>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item"><label>Correo</label><p id="perfil-correo">...</p></div>
+                        <div class="info-item"><label>Teléfono</label><p id="perfil-telefono">...</p></div>
+                        <div class="info-item full"><label>Dirección</label><p id="perfil-direccion">...</p></div>
+                        <div class="info-item"><label>Método de Pago</label><p id="perfil-pago">...</p></div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="dashboard-editar-cliente.html" class="btn-neon-purple" style="text-decoration: none; display: inline-block;">
+                            <i class="fas fa-edit"></i> Actualizar Datos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="premium-card">
+                        <div class="card-header"><h3><i class="fas fa-star"></i> Reseñas Hechas</h3></div>
+                        <div class="empty-msg">
+                            <i class="fas fa-comment-dots"></i>
+                            <p>Aún no has calificado a ningún trabajador.</p>
+                        </div>
+                    </div>
+                    <div class="premium-card">
+                        <div class="card-header"><h3><i class="fas fa-history"></i> Últimas Solicitudes</h3></div>
+                        <div class="empty-msg">
+                            <i class="fas fa-clipboard-list"></i>
+                            <p>No tienes servicios solicitados recientemente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/dashboard-perfil-cliente.js"></script>
+</body>
+</html>

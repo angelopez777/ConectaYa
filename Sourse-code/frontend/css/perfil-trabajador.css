@@ -7,6 +7,8 @@
     --gray-text: #94a3b8;
 }
 
+* { box-sizing: border-box; }
+
 body {
     background-color: var(--dark-bg);
     color: white;
@@ -14,17 +16,88 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px 12px;
+    width: 100%;
 }
 
-.main-wrapper { padding: 40px 20px; width: 100%; max-width: 500px; }
+.main-wrapper { width: 100%; max-width: 540px; margin: 0 auto; }
 
 .form-card {
     background: var(--card-bg);
-    padding: 30px;
-    border-radius: 24px;
+    padding: 40px;
+    border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.05);
     text-align: center;
+    position: relative;
 }
+
+/* --- BOTÓN VOLVER --- */
+.link-back {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    color: var(--gray-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.25s ease;
+}
+.link-back:hover { color: var(--neon-color); }
+
+/* --- CABECERA --- */
+.brand-header { margin-bottom: 18px; }
+.logo-text {
+    font-size: 2rem;
+    margin: 0 0 6px;
+    font-weight: 800;
+}
+.logo-text span { color: var(--neon-color); }
+.page-title { margin: 0 0 6px; font-size: 1.2rem; font-weight: 700; }
+.subtitle { margin: 0 0 22px; color: var(--gray-text); font-size: 0.85rem; }
+
+/* --- FOTO PERFIL --- */
+.photo-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 22px; }
+.avatar-wrapper {
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    background: #1a1a1e;
+    border: 2px solid rgba(168, 85, 247, 0.9);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.35);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#img-preview { width: 100%; height: 100%; object-fit: cover; }
+.btn-camera {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.9);
+    color: var(--neon-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+.btn-camera:hover { background: var(--neon-color); color: #fff; }
+.photo-hint { margin: 12px 0 0; font-size: 0.8rem; color: var(--gray-text); }
+
+/* --- INPUT PRINCIPAL --- */
+.form-group { text-align: left; margin-bottom: 18px; }
+.label-neon { display: block; font-size: 0.8rem; color: var(--gray-text); margin-bottom: 8px; }
+.label-neon i { color: var(--neon-color); margin-right: 8px; }
 
 /* CONTENEDORES NEÓN */
 .neon-container {
@@ -32,7 +105,8 @@ body {
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 25px;
-    background: #000;
+    background: rgba(0, 0, 0, 0.25);
+    width: 100%;
 }
 
 .legend-neon {
@@ -44,13 +118,14 @@ body {
 }
 
 /* DÍAS */
-.days-flex { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.days-flex { display: flex; justify-content: space-between; margin-bottom: 16px; gap: 8px; }
 .day-item {
     background: var(--input-bg);
     width: 35px; height: 35px;
     display: flex; align-items: center; justify-content: center;
     border-radius: 8px; font-size: 0.8rem; cursor: pointer;
     border: 1px solid rgba(255,255,255,0.1);
+    user-select: none;
 }
 
 .day-item:has(input:checked) {
@@ -65,24 +140,147 @@ body {
     background: var(--input-bg);
     border: 1px solid rgba(255,255,255,0.1);
     color: white; padding: 12px; border-radius: 10px; width: 100%;
+    outline: none;
+}
+.input-dark:focus {
+    border-color: rgba(168, 85, 247, 0.7);
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.08);
 }
 
-.row-dinamica { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
-.time-box { flex: 1; display: flex; align-items: center; gap: 5px; font-size: 0.8rem; }
+.row-dinamica { margin-bottom: 10px; }
+
+/* Layout consistente para filas dinámicas */
+.row-horario,
+.row-labor,
+.row-estudio {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+}
+
+.row-horario {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 34px;
+}
+
+.row-labor {
+    grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr) 34px;
+}
+
+.row-estudio {
+    grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr) 34px;
+}
+
+.row-horario { row-gap: 10px; }
+.row-labor,
+.row-estudio { row-gap: 12px; }
+
+.row-horario > .btn-quitar,
+.row-labor > .btn-quitar,
+.row-estudio > .btn-quitar {
+    justify-self: end;
+}
+
+.row-horario:first-child > .btn-quitar {
+    visibility: hidden;
+    pointer-events: none;
+}
+.time-box { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; }
+.time-box span { width: 26px; color: var(--gray-text); }
+.time-input { padding: 10px 12px; }
+.time-box input { flex: 1; width: 100%; }
+
+/* Corrige el look “blanco” del selector de hora en algunos navegadores */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.7;
+    cursor: pointer;
+}
+input[type="time"]::-webkit-datetime-edit { color: #fff; }
+input[type="time"]::-webkit-datetime-edit-fields-wrapper { padding: 0; }
 .flex-3 { flex: 3; }
 .flex-1 { flex: 1; }
+
+/* En grid: que cada control llene su columna */
+.row-labor > .input-dark,
+.row-estudio > .input-dark,
+.row-estudio > .select-dark,
+.row-horario .input-dark {
+    width: 100%;
+    min-width: 0;
+}
+
+/* Evita que el texto se “coma” el layout visual */
+.row-estudio select,
+.row-labor input,
+.row-estudio input {
+    text-overflow: ellipsis;
+}
+
+.row-labor .flex-3,
+.row-labor .flex-1,
+.row-estudio .flex-3,
+.row-estudio .flex-1 {
+    flex: initial;
+}
+
+.row-labor input[type="number"] { text-align: center; }
+
+.select-dark {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.65) 50%),
+                      linear-gradient(135deg, rgba(255,255,255,0.65) 50%, transparent 50%);
+    background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 38px;
+}
+
+.btn-quitar {
+    background: rgba(239, 68, 68, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.55);
+    color: rgba(254, 202, 202, 0.95);
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: 0.2s ease;
+}
+.btn-quitar:hover {
+    background: rgba(239, 68, 68, 0.22);
+    border-color: rgba(239, 68, 68, 0.85);
+}
+
+/* Hace que las filas se vean más “ordenadas” visualmente */
+#wrapper-horarios .row-horario,
+#wrapper-labores .row-labor,
+#wrapper-estudios .row-estudio {
+    padding: 4px 0;
+}
 
 .btn-add-item {
     background: transparent; border: 1px dashed var(--neon-color);
     color: var(--neon-color); width: 100%; padding: 10px;
     border-radius: 10px; cursor: pointer; font-size: 0.8rem;
+    transition: 0.2s ease;
 }
+.btn-add-item:hover { background: rgba(168, 85, 247, 0.08); }
 
 .btn-main-neon {
     width: 100%; padding: 18px; border-radius: 15px; border: none;
     background: linear-gradient(90deg, #a855f7, #7c3aed);
     color: white; font-weight: bold; cursor: pointer;
     box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+    transition: 0.2s ease;
 }
+.btn-main-neon:hover { transform: translateY(-1px); filter: brightness(1.05); }
 
 .btn-remove { background: #ef4444; border: none; color: white; border-radius: 5px; cursor: pointer; padding: 5px 10px; }
+
+@media (max-width: 420px) {
+    .form-card { padding: 34px 22px; }
+    .main-wrapper { max-width: 420px; }
+}

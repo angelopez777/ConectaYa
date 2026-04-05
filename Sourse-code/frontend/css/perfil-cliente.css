@@ -1,6 +1,9 @@
-/* ESTILOS: perfil-cliente.css 
-    SOLUCIÓN: Fix Autocomplete & Dark Neon Design 
-*/
+/**
+ * PROYECTO: ConectaYa
+ * ARCHIVO: /frontend/css/perfil-cliente.css
+ * ESTÉTICA: Dark Premium / Neón Morado (#a855f7)
+ * REGLA: Fix para Autocomplete de Navegadores
+ */
 
 :root {
     --bg-oscuro: #0a0a0c;
@@ -8,9 +11,16 @@
     --neon-purple: #a855f7;
     --neon-glow: rgba(168, 85, 247, 0.4);
     --text-gray: #94a3b8;
+    --input-bg: #1a1a1e;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+/* --- RESET GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
     background-color: var(--bg-oscuro);
@@ -18,8 +28,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color: white;
 }
 
+/* --- CONTENEDOR PRINCIPAL --- */
 .card-perfil {
     background-color: var(--card-bg);
     width: 100%;
@@ -29,12 +41,14 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* --- BOTÓN VOLVER --- */
 .btn-atras {
     position: absolute;
-    top: 25px; left: 25px;
+    top: 25px;
+    left: 25px;
     color: var(--text-gray);
     text-decoration: none;
     font-size: 0.9rem;
@@ -43,29 +57,66 @@ body {
     gap: 8px;
     transition: 0.3s;
 }
-.btn-atras:hover { color: var(--neon-purple); }
+
+.btn-atras:hover {
+    color: var(--neon-purple);
+}
 
 /* --- CABECERA --- */
-.logo-texto { font-size: 2rem; color: white; margin-bottom: 5px; }
-.logo-texto span { color: var(--neon-purple); }
-.subtitulo { color: white; font-size: 1.2rem; margin-bottom: 5px; }
-.instruccion { color: var(--text-gray); font-size: 0.85rem; margin-bottom: 30px; }
+.logo-texto {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.logo-texto span {
+    color: var(--neon-purple);
+}
+
+.subtitulo {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.instruccion {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+}
 
 /* --- SECCIÓN AVATAR --- */
-.avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; }
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
 
 .avatar-circle {
-    width: 115px; height: 115px;
+    width: 115px;
+    height: 115px;
     border-radius: 50%;
     border: 2px solid var(--neon-purple);
-    background: #1a1a1e;
-    display: flex; justify-content: center; align-items: center;
-    overflow: hidden; margin-bottom: 15px;
+    background: var(--input-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 15px;
     box-shadow: 0 0 15px var(--neon-glow);
 }
 
-.avatar-circle i { font-size: 3.5rem; color: #2a2a2e; }
-.avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-circle i {
+    font-size: 3.5rem;
+    color: #2a2a2e;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .btn-subir-foto {
     background: rgba(168, 85, 247, 0.1);
@@ -77,38 +128,62 @@ body {
     cursor: pointer;
     transition: 0.3s;
 }
-.btn-subir-foto:hover { background: var(--neon-purple); color: white; }
 
-/* --- INPUTS Y FIX AUTOCOMPLETADO --- */
-.input-block { text-align: left; margin-bottom: 25px; }
-.input-block label { color: var(--text-gray); font-size: 0.8rem; display: block; margin-bottom: 8px; }
+.btn-subir-foto:hover {
+    background: var(--neon-purple);
+    color: white;
+}
+
+/* --- INPUTS Y BLOQUES --- */
+.input-block {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.input-block label {
+    color: var(--text-gray);
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 8px;
+}
 
 .input-wrapper {
-    background: #1a1a1e;
+    background: var(--input-bg);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 12px 15px;
     display: flex;
     align-items: center;
     gap: 12px;
+    transition: 0.3s;
 }
 
-.input-wrapper i { color: var(--neon-purple); }
+.input-wrapper:focus-within {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.input-wrapper i {
+    color: var(--neon-purple);
+    width: 20px;
+    text-align: center;
+}
 
 .input-wrapper input {
-    background: transparent !important; /* Forzamos transparencia */
+    background: transparent !important;
     border: none;
     color: white !important;
     outline: none;
     width: 100%;
+    font-size: 0.95rem;
 }
 
-/* CRÍTICO: Evita que el cuadro se vuelva blanco al autocompletar */
+/* --- FIX CRÍTICO: AUTOCOMPLETADO (Evita fondo blanco/azul) --- */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
     -webkit-text-fill-color: white !important;
-    -webkit-box-shadow: 0 0 0px 1000px #1a1a1e inset !important; /* Rellena con tu color oscuro */
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a1e inset !important;
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -121,8 +196,19 @@ input:-webkit-autofill:focus {
     border-radius: 12px;
     color: white;
     font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
     box-shadow: 0 5px 15px var(--neon-glow);
     transition: 0.3s;
+    margin-top: 10px;
 }
-.btn-finalizar:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.btn-finalizar:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 8px 20px var(--neon-glow);
+}
+
+.btn-finalizar:active {
+    transform: translateY(0);
+}

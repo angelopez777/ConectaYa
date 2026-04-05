@@ -2,28 +2,72 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>ConectaYa | Términos</title>
-    <link rel="stylesheet" href="../css/estilos-perfiles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa | Paso Final</title>
+    <link rel="stylesheet" href="../css/terminos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="card-registro">
-        <div class="header-registro">
-            <div class="icono-final">
-                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" style="filter: invert(1); width: 60px;">
+
+    <?php 
+        // Ruta corregida para entrar a la configuración de sesión
+        include_once '../../backend/config/session-start.php'; 
+    ?>
+
+    <div class="master-wrapper">
+        <section class="main-card-neon">
+            
+            <a href="metodo-pago.html" class="back-navigation">
+                <span>❮</span> VOLVER
+            </a>
+
+            <header class="card-header">
+                <div class="card-shield-logo">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h1 class="logo-main">Conecta<span>Ya</span></h1>
+                <p class="step-indicator">PASO 3 DE 3</p>
+            </header>
+
+            <form id="form-legal">
+                <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['id_usuario'] ?? ''; ?>">
+
+                <div class="legal-summary-box">
+                    <p>
+                        Casi terminas. Para activar tu perfil, revisa nuestros 
+                        <span id="open-terms" class="hyper-link-neon">términos de uso</span> 
+                        y la <span id="open-privacy" class="hyper-link-neon">política de privacidad</span>.
+                    </p>
+                </div>
+
+                <div class="input-check-group">
+                    <label class="custom-check-container">
+                        <input type="checkbox" id="check-legal" required>
+                        <span class="checkmark"></span>
+                        <span class="label-txt">He leído y acepto los acuerdos legales.</span>
+                    </label>
+                </div>
+
+                <button type="button" id="btn-aceptar-terminos" class="btn-neon-finish">
+                    Finalizar Registro <i class="fas fa-rocket"></i>
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <div id="modal-container" class="modal-overlay">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3 id="modal-title-text">Documento Oficial</h3>
+                <button type="button" class="close-x-btn" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div id="modal-body-content" class="modal-inner-scroll"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn-close-view">Entendido</button>
             </div>
         </div>
-
-        <p class="texto-legal">
-            Al oprimir el botón de "Siguiente", aceptas los <b>Términos de uso</b> de ConectaYa y la <b>Política de privacidad</b>.
-        </p>
-
-        <form action="../../backend/registro/finalizar-perfil.php" method="POST">
-            <div class="check-group">
-                <input type="checkbox" id="acepto" name="acepto" required>
-                <label for="acepto">Confirmo que tengo al menos 18 años y acepto los términos.</label>
-            </div>
-            <button type="submit" class="btn-siguiente">Finalizar Registro</button>
-        </form>
     </div>
+
+    <script src="../js/terminos.js"></script>
 </body>
 </html>

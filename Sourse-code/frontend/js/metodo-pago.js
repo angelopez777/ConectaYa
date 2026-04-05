@@ -1,19 +1,89 @@
-/* LÓGICA DE NAVEGACIÓN DINÁMICA - MÉTODO DE PAGO */
+/**
+ * PROYECTO: ConectaYa
+ * MODULO: Gestión de Selección y Registro de Pago
+ * REGLA: Escritura desde cero, navegación basada en historial.
+ * ESTÉTICA: Dark Premium (#a855f7)
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const linkRegresar = document.getElementById('link-regresar');
-    
-    // Obtener la URL de la página anterior
-    const paginaAnterior = document.referrer;
+    const methodBoxes = document.querySelectorAll('.method-box');
+    const inputMetodo = document.getElementById('metodo_seleccionado');
+    const formPago = document.getElementById('form-pago');
+    const btnVolver = document.getElementById('btn-volver-dinamico');
 
-    if (paginaAnterior.includes('perfil-trabajador.html')) {
-        linkRegresar.href = 'perfil-trabajador.html';
-    } else if (paginaAnterior.includes('perfil-empresa.html')) {
-        linkRegresar.href = 'perfil-empresa.html';
-    } else {
-        // Si entra directo, lo mandamos al paso 2 de registro por seguridad
-        linkRegresar.href = 'registro-paso2.html';
+    // 1. NAVEGACIÓN INTELIGENTE (Solución al problema de 'Volver')
+    if (btnVolver) {
+        btnVolver.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Esto regresa al usuario a la página exacta de donde vino
+            // (Ya sea perfil-cliente o perfil-trabajador)
+            window.history.back();
+        });
     }
 
-    console.log("Sistema de retorno configurado hacia: " + linkRegresar.href);
+    // 2. SELECCIÓN VISUAL NEÓN
+    methodBoxes.forEach(box => {
+        box.addEventListener('click', () => {
+            // Limpiar estados previos
+            methodBoxes.forEach(b => {
+                b.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                b.style.boxShadow = 'none';
+                b.classList.remove('active');
+            });
+            
+            // Aplicar estilo activo neón morado
+            box.classList.add('active');
+            box.style.borderColor = '#a855f7';
+            box.style.boxShadow = '0 0 15px rgba(168, 85, 247, 0.4)';
+            
+            const valor = box.getAttribute('data-value');
+            inputMetodo.value = valor;
+        });
+    });
+
+    // 3. ENVÍO AJAX AL BACKEND
+    if (formPago) {
+        formPago.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!inputMetodo.value) {
+                alert("Por favor, selecciona un método de pago (Transferencia o Tarjeta).");
+                return;
+            }
+
+            const formData = new FormData(formPago);
+
+            try {
+                const response = await fetch('../../backend/registro/procesar-pago.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert("Atención: " + data.message);
+                }
+
+            } catch (error) {
+                console.error("Error técnico:", error);
+                alert("Hubo un problema al procesar el pago. Revisa la consola.");
+            }
+        });
+    }
+
+    // 4. EFECTO FOCO EN INPUTS (Estética Premium)
+    const inputs = document.querySelectorAll('input[type="text"]');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.style.borderColor = '#a855f7';
+            input.style.boxShadow = '0 0 8px rgba(168, 85, 247, 0.3)';
+        });
+        input.addEventListener('blur', () => {
+            input.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            input.style.boxShadow = 'none';
+        });
+    });
 });

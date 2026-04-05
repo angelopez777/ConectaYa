@@ -3,42 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConectaYa | Inicio</title>
-    <link rel="stylesheet" href="../../css/registro-final.css">
-    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
+    <title>ConectaYa | Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
 </head>
-<body>
-    <div class="background-glow"></div>
+<body class="dark-theme">
 
-    <nav class="nav-principal">
-        <div class="logo-area">
-            <h1 class="logo-texto">Conecta<span>Ya</span></h1>
-        </div>
-        <div class="perfil-nav">
-            <span id="user-name">Cargando...</span>
-            <div class="avatar-mini">
-                <img src="../../assets/perfiles/default-cliente.png" alt="Perfil">
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
             </div>
-        </div>
-    </nav>
 
-    <main class="content-wrapper">
-        <section class="hero-search">
-            <h2>¿A quién necesitas hoy?</h2>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Ej: Electricista, Plomero...">
-                <button>Buscar</button>
+            <nav class="sidebar-menu">
+                <p class="menu-label">Principal</p>
+                <a href="inicio-cliente.html" class="menu-item active">
+                    <i class="fas fa-home"></i> <span>Inicio</span>
+                </a>
+                <a href="dashboard-perfil-cliente.html" class="menu-item">
+                    <i class="fas fa-user"></i> <span>Mi Perfil</span>
+                </a>
+                <a href="mensajes-cliente.html" class="menu-item">
+                    <i class="fas fa-envelope"></i> <span>Mensajes</span>
+                    <span class="badge-neon" id="msg-badge">0</span>
+                </a>
+
+                <p class="menu-label">Gestión</p>
+                <a href="calendario-cliente.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> <span>Calendario</span>
+                </a>
+                <a href="contratos-cliente.html" class="menu-item">
+                    <i class="fas fa-file-invoice"></i> <span>Mis Contratos</span>
+                </a>
+                <a href="notificaciones.html" class="menu-item">
+                    <i class="fas fa-bell"></i> <span>Notificaciones</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button class="btn-role" onclick="window.location.href='inicio-trabajador.html'">
+                    <i class="fas fa-exchange-alt"></i> Cambiar a Trabajador
+                </button>
+                <a href="../../../backend/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
             </div>
-        </section>
+        </aside>
 
-        <div class="categories-grid">
-            <div class="card-category">Hogar</div>
-            <div class="card-category">Técnico</div>
-            <div class="card-category">Salud</div>
-        </div>
-    </main>
+        <main class="main-content">
+            <header class="content-header">
+                <h1 class="welcome-text">Hola, <span class="neon-text" id="user-name">Usuario</span> 👋</h1>
+            </header>
+
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-input-group">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="¿Qué servicio necesitas hoy? (Ej: Plomero, Electricista...)" id="main-search">
+                    </div>
+                    <button class="btn-search-action">Publicar Oferta</button>
+                </div>
+            </section>
+
+            <div class="dashboard-grid">
+                <div class="grid-main">
+                    <div class="stats-row">
+                        <div class="stat-glass-card">
+                            <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="stat-text">
+                                <span class="stat-number" id="solicitudes-val">0</span>
+                                <span class="stat-desc">Solicitudes Activas</span>
+                            </div>
+                        </div>
+                        <div class="stat-glass-card">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-text">
+                                <span class="stat-number" id="rating-val">0.0</span>
+                                <span class="stat-desc">Calificación Promedio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card main-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-clock"></i> Próximos Encuentros</h3>
+                        </div>
+                        <div class="card-content empty-state">
+                            <i class="fas fa-calendar-check empty-icon"></i>
+                            <p>No tienes servicios programados para esta semana.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-side">
+                    <div class="premium-card widget-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-comment-alt"></i> Mensajes</h3>
+                        </div>
+                        <div id="recent-chats" class="widget-content">
+                            <p class="empty-msg">No tienes chats pendientes</p>
+                        </div>
+                        <button onclick="window.location.href='mensajes-cliente.html'" class="btn-ghost-purple">Ver bandeja</button>
+                    </div>
+
+                    <div class="premium-card widget-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-lightbulb"></i> Avisos</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="info-alert">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Completa tu dirección para recibir ofertas cercanas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <script src="../../js/dashboard-cliente.js"></script>
 </body>

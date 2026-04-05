@@ -1,0 +1,117 @@
+/* GRID DE DISEÑO */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 25px;
+    margin-top: 20px;
+    height: calc(100vh - 180px);
+}
+
+/* TARJETA DEL CALENDARIO */
+.calendar-card {
+    background: #16161a;
+    border: 1px solid rgba(168, 85, 247, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* OVERRIDE DE FULLCALENDAR (ESTILO NEÓN) */
+:root {
+    --fc-border-color: #2a2a30;
+    --fc-daygrid-event-dot-width: 8px;
+    --fc-event-bg-color: rgba(168, 85, 247, 0.2);
+    --fc-event-border-color: #a855f7;
+    --fc-event-text-color: #fff;
+    --fc-page-bg-color: #16161a;
+}
+
+.fc {
+    color: #e2e2e2;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #a855f7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fc .fc-button-primary {
+    background: #1e1e24;
+    border: 1px solid #a855f7;
+    color: #a855f7;
+    text-transform: capitalize;
+    transition: 0.3s;
+}
+
+.fc .fc-button-primary:hover {
+    background: #a855f7;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+.fc .fc-button-primary:disabled {
+    background: #0f0f12;
+    border-color: #2a2a30;
+}
+
+.fc .fc-day-today {
+    background: rgba(168, 85, 247, 0.05) !important;
+}
+
+/* PANEL DE DETALLES */
+.event-details-panel {
+    background: #16161a;
+    border: 1px solid rgba(168, 85, 247, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    color: #b3b3b3;
+}
+
+.details-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #a855f7;
+    border-bottom: 1px solid #2a2a30;
+    padding-bottom: 10px;
+}
+
+.info-placeholder {
+    text-align: center;
+    padding-top: 50px;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.event-data-card {
+    background: #1e1e24;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #a855f7;
+}
+
+.event-data-card h4 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.event-data-card p {
+    font-size: 0.85rem;
+    margin: 5px 0;
+}
+
+.event-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+    font-weight: bold;
+    font-size: 0.75rem;
+    margin-top: 10px;
+}

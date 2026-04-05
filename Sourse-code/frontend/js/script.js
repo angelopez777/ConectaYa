@@ -1,62 +1,67 @@
-// /conectaya/frontend/js/script.js
-
 /**
- * Lógica para el efecto de texto rotativo (typing effect)
- * en la página de inicio de ConectaYa.
+ * PROYECTO: ConectaYa
+ * MODULO: Lógica de Interfaz Principal
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- 1. EFECTO DE ESCRITURA (TYPING EFFECT) ---
     const typingSpan = document.getElementById('typing');
-    
-    // Array de oficios que cambiarán dinámicamente
-    const oficios = [
-        "Técnicos...",
-        "Limpiadores...",
-        "Plomeros...",
-        "Electricistas...",
-        "Mecánicos...",
-        "Expertos..."
-    ];
+    const oficios = ["Técnicos...", "Limpiadores...", "Plomeros...", "Electricistas...", "Expertos..."];
     
     let oficioIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 150; // Velocidad de escritura
+    let typeSpeed = 150;
 
-    /**
-     * Función principal que maneja el efecto de escritura y borrado.
-     */
     function typeEffect() {
         const currentOficio = oficios[oficioIndex];
         
         if (isDeleting) {
-            // Borrando texto
             typingSpan.textContent = currentOficio.substring(0, charIndex - 1);
             charIndex--;
-            typeSpeed = 75; // Velocidad de borrado más rápida
+            typeSpeed = 70;
         } else {
-            // Escribiendo texto
             typingSpan.textContent = currentOficio.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = 150; // Velocidad de escritura normal
+            typeSpeed = 150;
         }
 
         if (!isDeleting && charIndex === currentOficio.length) {
-            // Se ha terminado de escribir el oficio, pausar antes de borrar
             isDeleting = true;
-            typeSpeed = 2000; // Pausa de 2 segundos al final
+            typeSpeed = 2000;
         } else if (isDeleting && charIndex === 0) {
-            // Se ha terminado de borrar, pasar al siguiente oficio
             isDeleting = false;
             oficioIndex = (oficioIndex + 1) % oficios.length;
-            typeSpeed = 500; // Pequeña pausa antes de empezar a escribir el siguiente
+            typeSpeed = 500;
         }
-
-        // Ejecutar la función recursivamente con el retraso calculado
         setTimeout(typeEffect, typeSpeed);
     }
-
-    // Iniciar el efecto
     typeEffect();
+
+    // --- 2. LÓGICA DEL MODAL DE BÚSQUEDA ---
+    const searchForm = document.getElementById('main-search-form');
+    const modal = document.getElementById('modal-auth');
+    const btnAceptar = document.getElementById('btn-aceptar-modal');
+
+    if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Detiene el envío real
+            modal.style.display = 'flex'; // Muestra el modal premium
+        });
+    }
+
+    if (btnAceptar) {
+        btnAceptar.addEventListener('click', () => {
+            // Redirección directa al login tras aceptar
+            window.location.href = 'html/login.html';
+        });
+    }
+
+    // Cerrar si hacen clic fuera del cuadro blanco
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 });

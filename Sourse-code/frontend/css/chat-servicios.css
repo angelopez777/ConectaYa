@@ -1,0 +1,63 @@
+/* PROYECTO: ConectaYa 
+   ESTÉTICA: Dark Premium con Neón Morado
+*/
+
+.chat-container {
+    background: #0a0a0c;
+    border: 1px solid #a855f7;
+    border-radius: 12px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 18px;
+    font-size: 0.9rem;
+}
+
+.message-mine {
+    background: #a855f7;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.message-other {
+    background: #1a1a1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    align-self: flex-start;
+}
+
+.chat-input-area {
+    padding: 15px;
+    background: #121214;
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    background: #0a0a0c;
+    border: 1px solid #333;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.chat-input-area input:focus {
+    border-color: #a855f7;
+    outline: none;
+}

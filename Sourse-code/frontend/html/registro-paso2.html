@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConectaYa | Paso 2</title>
-    
+    <title>ConectaYa | Selecciona tu Rol</title>
     <link rel="stylesheet" href="../css/registro-paso2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -12,60 +11,48 @@
 
     <main class="card-registro">
         <a href="registro.html" class="btn-volver-interno">
-            <i class="fas fa-arrow-left"></i> Volver
+            <i class="fas fa-chevron-left"></i> Volver
         </a>
 
         <header class="header-registro">
             <h1 class="logo-texto">Conecta<span>Ya</span></h1>
-            
             <div class="texto-introduccion">
                 <p class="tagline">Personaliza tu experiencia</p>
                 <p class="instruccion">Selecciona tu rol para configurar tu perfil profesional</p>
             </div>
         </header>
 
-        <form action="../../backend/registro/procesar-paso2.php" method="POST">
-            
+        <form id="form-paso2" action="../../backend/registro/procesar-paso2.php" method="POST">
             <div class="opciones-grid">
                 
                 <label class="tarjeta-rol">
-                    <input type="radio" name="rol" value="cliente" required>
+                    <input type="radio" name="tipo_usuario" value="cliente" required>
                     <div class="rol-diseno">
                         <div class="icon-rol"><i class="fas fa-user"></i></div>
                         <div class="info-rol">
                             <h3>Soy Cliente</h3>
-                            <p>Busco contratar servicios y soluciones.</p>
+                            <p>Busco contratar servicios y soluciones rápidas.</p>
                         </div>
                     </div>
                 </label>
 
                 <label class="tarjeta-rol">
-                    <input type="radio" name="rol" value="trabajador">
+                    <input type="radio" name="tipo_usuario" value="trabajador">
                     <div class="rol-diseno">
                         <div class="icon-rol"><i class="fas fa-tools"></i></div>
                         <div class="info-rol">
                             <h3>Soy Trabajador</h3>
-                            <p>Ofrezco mis habilidades y busco empleo.</p>
-                        </div>
-                    </div>
-                </label>
-
-                <label class="tarjeta-rol">
-                    <input type="radio" name="rol" value="empresa">
-                    <div class="rol-diseno">
-                        <div class="icon-rol"><i class="fas fa-building"></i></div>
-                        <div class="info-rol">
-                            <h3>Soy Empresa</h3>
-                            <p>Gestión masiva de proyectos y personal.</p>
+                            <p>Ofrezco mis habilidades y busco nuevas oportunidades.</p>
                         </div>
                     </div>
                 </label>
                 
             </div>
 
-            <button type="submit" class="btn-siguiente">Siguiente</button>
+            <button type="submit" class="btn-siguiente">CONTINUAR</button>
         </form>
     </main>
 
+    <script src="../js/registro-paso2.js"></script>
 </body>
 </html>

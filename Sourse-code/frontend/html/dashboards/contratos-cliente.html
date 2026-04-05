@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Contratos | ConectaYa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
+    <link rel="stylesheet" href="../../css/contratos-cliente.css">
+</head>
+<body class="dark-theme">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <p class="menu-label">PRINCIPAL</p>
+                <a href="inicio-cliente.html" class="menu-item">
+                    <i class="fas fa-home"></i> <span>Inicio</span>
+                </a>
+                <a href="dashboard-perfil-cliente.html" class="menu-item">
+                    <i class="fas fa-user"></i> <span>Mi Perfil</span>
+                </a>
+                <a href="mensajes-cliente.html" class="menu-item">
+                    <i class="fas fa-envelope"></i> <span>Mensajes</span>
+                </a>
+                
+                <p class="menu-label">GESTIÓN</p>
+                <a href="calendario-cliente.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> <span>Calendario</span>
+                </a>
+                <a href="contratos-cliente.html" class="menu-item active">
+                    <i class="fas fa-file-invoice"></i> <span>Mis Contratos</span>
+                </a>
+                <a href="notificaciones.html" class="menu-item">
+                    <i class="fas fa-bell"></i> <span>Notificaciones</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button class="btn-role" onclick="window.location.href='inicio-trabajador.html'">
+                    <i class="fas fa-exchange-alt"></i> Cambiar a Trabajador
+                </button>
+                <a href="../../../backend/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header-premium">
+                <h1 class="welcome-text">Gestión de <span class="neon-text">Contratos</span></h1>
+                <p class="header-desc">Visualiza y descarga tus acuerdos de servicios contratados de forma segura.</p>
+            </header>
+
+            <section class="contracts-section">
+                <div class="premium-card">
+                    <div class="card-header-premium">
+                        <h3><i class="fas fa-file-contract"></i> Listado de Acuerdos Activos</h3>
+                        <div class="header-actions">
+                            <button class="btn-icon-neon" onclick="fetchContratos()" title="Actualizar">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="contracts-manager" class="manager-body">
+                        <div id="table-view" class="table-scroll-premium" style="display: none;">
+                            <table class="premium-table">
+                                <thead>
+                                    <tr>
+                                        <th>Servicio / Profesional</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Monto</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-contratos">
+                                    </tbody>
+                            </table>
+                        </div>
+
+                        <div id="status-view" class="empty-state-premium">
+                            <div id="status-spinner" class="spinner-neon" style="display: none;"></div>
+                            <i id="status-icon" class="fas fa-folder-open empty-icon"></i>
+                            <p id="status-text">Buscando tus contratos...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/contratos-cliente.js"></script>
+</body>
+</html>

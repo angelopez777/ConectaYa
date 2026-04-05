@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones | ConectaYa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
+    <link rel="stylesheet" href="../../css/notificaciones.css">
+</head>
+<body class="dark-theme">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
+            </div>
+            <nav class="sidebar-menu">
+                <p class="menu-label">Principal</p>
+                <a href="inicio-cliente.html" class="menu-item">
+                    <i class="fas fa-home"></i> <span>Inicio</span>
+                </a>
+                <a href="dashboard-perfil-cliente.html" class="menu-item">
+                    <i class="fas fa-user"></i> <span>Mi Perfil</span>
+                </a>
+                <a href="mensajes-cliente.html" class="menu-item">
+                    <i class="fas fa-envelope"></i> <span>Mensajes</span>
+                </a>
+                
+                <p class="menu-label">Gestión</p>
+                <a href="calendario-cliente.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> <span>Calendario</span>
+                </a>
+                <a href="contratos-cliente.html" class="menu-item">
+                    <i class="fas fa-file-invoice"></i> <span>Mis Contratos</span>
+                </a>
+                <a href="notificaciones.html" class="menu-item active">
+                    <i class="fas fa-bell"></i> <span>Notificaciones</span>
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <button class="btn-role" onclick="window.location.href='inicio-trabajador.html'">
+                    <i class="fas fa-exchange-alt"></i> Cambiar a Trabajador
+                </button>
+                <a href="../../../backend/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1 class="welcome-text">Centro de <span class="neon-text">Notificaciones</span></h1>
+                <div class="header-actions">
+                    <button id="marcar-leidas" class="btn-text">Marcar todas como leídas</button>
+                </div>
+            </header>
+
+            <section class="notifications-container">
+                <div id="lista-notificaciones" class="notifications-list">
+                    <div id="empty-notifications" class="empty-state">
+                        <i class="fas fa-bell-slash"></i>
+                        <p>No tienes notificaciones nuevas.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/notificaciones.js"></script>
+</body>
+</html>

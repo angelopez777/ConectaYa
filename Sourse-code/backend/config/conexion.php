@@ -1,17 +1,21 @@
 <?php
-// Configuración de conexión local (XAMPP)
+/**
+ * PROYECTO: ConectaYa
+ * ARCHIVO: backend/config/conexion.php
+ * DESCRIPCIÓN: Conexión centralizada a la base de datos XAMPP.
+ */
+
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "conectaya"; // Asegúrate de que este sea el nombre de tu base de datos
+$db   = "conectaya";
 
 $conexion = mysqli_connect($host, $user, $pass, $db);
 
-// Verificar si la conexión falló
 if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
+    die("Error de conexión a ConectaYa: " . mysqli_connect_error());
 }
 
-// Configurar caracteres para aceptar tildes y eñes
-mysqli_set_charset($conexion, "utf8");
+// Forzar set de caracteres para evitar errores con tildes o Ñ
+mysqli_set_charset($conexion, "utf8mb4");
 ?>

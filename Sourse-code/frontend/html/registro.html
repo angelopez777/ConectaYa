@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro | ConectaYa</title>
-    
     <link rel="stylesheet" href="../css/registro.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -21,7 +19,7 @@
             <p>Crea tu cuenta profesional hoy</p>
         </header>
 
-        <form action="../../backend/registro/procesar-paso1.php" method="POST">
+        <form id="form-registro" action="../../backend/registro/procesar-paso1.php" method="POST">
             
             <div class="input-group">
                 <label>Nombre Completo</label>
@@ -52,7 +50,7 @@
                 <div class="input-container">
                     <i class="fas fa-lock icon-form"></i>
                     <input type="password" id="pass_1" name="password" required placeholder="Crea una clave segura">
-                    <i class="fas fa-eye toggle-eye" onclick="verPassword('pass_1', this)"></i>
+                    <i class="fas fa-eye toggle-eye" data-target="pass_1"></i>
                 </div>
             </div>
 
@@ -61,11 +59,11 @@
                 <div class="input-container">
                     <i class="fas fa-shield-alt icon-form"></i>
                     <input type="password" id="pass_2" name="confirm_password" required placeholder="Repite tu clave">
-                    <i class="fas fa-eye toggle-eye" onclick="verPassword('pass_2', this)"></i>
+                    <i class="fas fa-eye toggle-eye" data-target="pass_2"></i>
                 </div>
             </div>
 
-            <button type="submit" name="registrar" class="btn-finalizar">Finalizar Registro</button>
+            <button type="submit" class="btn-finalizar">Finalizar Registro</button>
             
             <p class="footer-link">
                 ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>

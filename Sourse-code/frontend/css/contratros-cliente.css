@@ -1,0 +1,161 @@
+/* DISEÑO PROFESIONAL DE CONTRATOS - CONECTAYA */
+
+.content-header-premium {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+}
+
+.header-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* TARJETA PREMIUM MEJORADA */
+.premium-card {
+    background: var(--bg-card);
+    border-radius: 15px;
+    border: 1px solid rgba(168, 85, 247, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.card-header-premium {
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header-premium h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-header-premium h3 i {
+    color: var(--neon);
+    text-shadow: 0 0 8px var(--neon);
+}
+
+/* TABLA PREMIUM PROFESIONAL */
+.manager-body {
+    min-height: 250px;
+}
+
+.table-scroll-premium {
+    overflow-x: auto;
+    padding: 0 20px 20px;
+}
+
+.premium-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    min-width: 800px; /* Asegura espacio para los textos */
+}
+
+.premium-table th {
+    padding: 15px 20px;
+    text-align: left;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(168, 85, 247, 0.2);
+    font-weight: 700;
+}
+
+.premium-table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #fff;
+    vertical-align: middle;
+}
+
+.premium-table tr:hover td {
+    background: rgba(168, 85, 247, 0.03);
+}
+
+/* BURBUJAS DE ESTADO */
+.status-pill {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-activo { 
+    background: rgba(34, 197, 94, 0.15); 
+    color: #22c55e; 
+    border: 1px solid rgba(34, 197, 94, 0.3); 
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.1);
+}
+
+.status-activo i { font-size: 0.6rem; }
+
+/* BOTONES DE ACCIÓN EN TABLA */
+.actions-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action-icon {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-dim);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-action-icon:hover {
+    border-color: var(--neon);
+    color: var(--neon);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+}
+
+/* ESTADO VACÍO MEJORADO */
+.empty-state-premium {
+    padding: 60px 30px;
+    text-align: center;
+    color: var(--text-dim);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.empty-icon {
+    font-size: 3.5rem;
+    color: rgba(168, 85, 247, 0.2);
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* SPINNER DE CARGA */
+.spinner-neon {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(168, 85, 247, 0.1);
+    border-top-color: var(--neon);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

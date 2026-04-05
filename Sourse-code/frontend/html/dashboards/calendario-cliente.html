@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario | ConectaYa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
+    <link rel="stylesheet" href="../../css/calendario-cliente.css">
+</head>
+<body class="dark-theme">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <p class="menu-label">Principal</p>
+                <a href="inicio-cliente.html" class="menu-item">
+                    <i class="fas fa-home"></i> <span>Inicio</span>
+                </a>
+                <a href="dashboard-perfil-cliente.html" class="menu-item">
+                    <i class="fas fa-user"></i> <span>Mi Perfil</span>
+                </a>
+                <a href="mensajes-cliente.html" class="menu-item">
+                    <i class="fas fa-envelope"></i> <span>Mensajes</span>
+                </a>
+                
+                <p class="menu-label">Gestión</p>
+                <a href="calendario-cliente.html" class="menu-item active">
+                    <i class="fas fa-calendar-alt"></i> <span>Calendario</span>
+                </a>
+                <a href="contratos-cliente.html" class="menu-item"><i class="fas fa-file-invoice"></i> <span>Mis Contratos</span></a>
+                <a href="notificaciones.html" class="menu-item"><i class="fas fa-bell"></i> <span>Notificaciones</span></a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button class="btn-role" onclick="window.location.href='inicio-trabajador.html'">
+                    <i class="fas fa-exchange-alt"></i> Cambiar a Trabajador
+                </button>
+                <a href="../../../backend/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Mi Agenda de Servicios</h1>
+                <p>Gestiona tus citas y mantenimientos programados</p>
+            </header>
+
+            <div class="calendar-grid">
+                <section class="calendar-card">
+                    <div id="calendar"></div>
+                </section>
+
+                <section class="event-details-panel">
+                    <div class="details-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Detalles de la Cita</h3>
+                    </div>
+                    <div id="event-info-content" class="info-placeholder">
+                        <p>Selecciona un evento en el calendario para ver los detalles.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/calendario-cliente.js"></script>
+</body>
+</html>

@@ -1,44 +1,35 @@
 <?php
-/* ============================================================
-   PROYECTO: ConectaYa
-   ARCHIVO: backend/registro/procesar-paso2.php
-   OBJETIVO: Recibir el rol del Paso 2 y actualizar al usuario
-   ============================================================ */
-
 session_start();
+include_once '../config/conexion.php';
 
-// Conexión a la base de datos (Ruta validada según tu estructura)
-require_once '../config/conexion.php';
+header('Content-Type: application/json');
+$response = ['success' => false, 'message' => ''];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    /* CAPTURAR EL ROL:
-       Cambiado a 'rol' para coincidir exactamente con el <input name="rol"> 
-       del archivo registro-paso2.html 
-    */
-    $rol = $_POST['rol']; 
-    $email = $_SESSION['user_email'];
-
-    /* ACTUALIZACIÓN:
-       Se ejecuta el UPDATE usando el correo guardado en la sesión.
-    */
-    $query = "UPDATE usuario SET tipo_usuario = '$rol' WHERE correo = '$email'";
-    mysqli_query($conexion, $query);
-
-    /* LÓGICA DE REDIRECCIÓN:
-       Las rutas apuntan a la carpeta 'frontend/html/'.
-       Se usa exit() para detener la ejecución tras el redireccionamiento.
-    */
-    if ($rol == 'trabajador') {
-        header("Location: ../../frontend/html/perfil-trabajador.html");
-        exit();
-    } elseif ($rol == 'empresa') {
-        header("Location: ../../frontend/html/perfil-empresa.html");
-        exit();
-    } else {
-        // Por defecto o si es 'cliente'
-        header("Location: ../../frontend/html/perfil-cliente.html");
-        exit();
-    }
+if (!isset($_SESSION['id_usuario'])) {
+    $response['message'] = "Sesión no válida";
+    echo json_encode($response);
+    exit();
 }
-?>
+
+$id_usuario = $_SESSION['id_usuario'];
+$tipo_usuario = $_POST['tipo_usuario'] ?? '';
+
+if ($tipo_usuario === 'cliente' || $tipo_usuario === 'trabajador') {
+    $tipo_final = ucfirst($tipo_usuario); // Cliente o Trabajador
+
+    $sql = "UPDATE usuario SET tipo_usuario = ? WHERE id_usuario = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("si", $tipo_final, $id_usuario);
+
+    if ($stmt->execute()) {
+        $response['success'] = true;
+    } else {
+        $response['message'] = "Error al actualizar en DB";
+    }
+    $stmt->close();
+} else {
+    $response['message'] = "Rol no permitido";
+}
+
+echo json_encode($response);
+exit();

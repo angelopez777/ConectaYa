@@ -1,45 +1,65 @@
 <?php
 /**
- * PROYECTO: CONECTAYA
- * ARCHIVO: procesar-pago.php
+ * PROYECTO: ConectaYa
+ * ARCHIVO: backend/registro/procesar-pago.php
  */
-session_start();
-require_once '../config/conexion.php';
 
-if (!isset($_SESSION['user_email'])) {
-    header("Location: ../../frontend/html/registro.html");
-    exit();
+include_once '../config/conexion.php';
+include_once '../config/session-start.php';
+
+header('Content-Type: application/json');
+
+// Verificación de sesión
+if (!isset($_SESSION['id_usuario'])) {
+    echo json_encode(['success' => false, 'message' => 'Sesión no encontrada.']);
+    exit;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_SESSION['user_email'];
-    $metodo = mysqli_real_escape_string($conexion, $_POST['metodo_pago']);
+$id_usuario = $_SESSION['id_usuario'];
 
-    $res = mysqli_query($conexion, "SELECT id_usuario, nombre, tipo_usuario FROM usuario WHERE correo = '$email'");
-    $user = mysqli_fetch_assoc($res);
-    
-    $id_u = $user['id_usuario'];
-    $nombre = $user['nombre'];
-    $tipo = $user['tipo_usuario'];
+// Captura de datos desde el POST (Asegúrate que los 'name' en el HTML coincidan)
+$tipo_metodo = $_POST['metodo_pago'] ?? null; 
+$proveedor   = $_POST['banco_entidad'] ?? null;
+$numero      = $_POST['numero_cuenta'] ?? null;
+$titular     = $_POST['titular'] ?? null;
 
-    $sql_pago = "INSERT INTO metodo_pago_usuario (id_usuario, tipo_metodo) VALUES ('$id_u', '$metodo')";
-    
-    if (mysqli_query($conexion, $sql_pago)) {
-        mysqli_query($conexion, "UPDATE usuario SET estado_cuenta = 'Activo' WHERE id_usuario = '$id_u'");
-
-        // Login automático para entrar directo al Dashboard
-        $_SESSION['id_usuario'] = $id_u;
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['tipo_usuario'] = $tipo;
-
-        if ($tipo == 'Trabajador') {
-            header("Location: ../../frontend/html/dashboards/inicio-trabajador.html");
-        } elseif ($tipo == 'Empresa') {
-            header("Location: ../../frontend/html/dashboards/inicio-empresa.html");
-        } else {
-            header("Location: ../../frontend/html/dashboards/inicio-cliente.html");
-        }
-        exit();
-    }
+// Validación básica
+if (empty($tipo_metodo) || empty($numero) || empty($titular)) {
+    echo json_encode(['success' => false, 'message' => 'Por favor completa todos los campos obligatorios.']);
+    exit;
 }
-?>
+
+try {
+    $conexion->begin_transaction();
+
+    // 1. Guardar en la tabla de métodos de pago
+    $sqlDetalle = "INSERT INTO metodo_pago_usuario 
+                  (id_usuario, tipo_metodo, proveedor, numero_cuenta_enmascarado, titular) 
+                  VALUES (?, ?, ?, ?, ?)";
+    $stmt1 = $conexion->prepare($sqlDetalle);
+    $stmt1->bind_param("issss", $id_usuario, $tipo_metodo, $proveedor, $numero, $titular);
+    $stmt1->execute();
+
+    // 2. Sincronizar preferencia en la tabla cliente
+    // ¡IMPORTANTE!: Debes haber ejecutado el ALTER TABLE primero.
+    $sqlCliente = "UPDATE cliente SET metodo_pago_pref = ? WHERE id_usuario = ?";
+    $stmt2 = $conexion->prepare($sqlCliente);
+    $stmt2->bind_param("si", $tipo_metodo, $id_usuario);
+    $stmt2->execute();
+
+    $conexion->commit();
+
+    echo json_encode([
+        'success' => true, 
+        'message' => '¡Método de pago guardado con éxito!',
+        'redirect' => 'terminos.html'
+    ]);
+
+} catch (Exception $e) {
+    $conexion->rollback();
+    // Este mensaje te dirá exactamente qué columna falta si el SQL falla
+    echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+} finally {
+    if (isset($stmt1)) $stmt1->close();
+    if (isset($stmt2)) $stmt2->close();
+}

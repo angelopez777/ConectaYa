@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConectaYa | Perfil Trabajador</title>
+    <title>ConectaYa | Perfil Profesional</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/perfil-trabajador.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
     <main class="main-wrapper">
         <section class="form-card">
-            
             <a href="registro-paso2.html" class="link-back">
                 <i class="fas fa-chevron-left"></i> Volver
             </a>
@@ -23,63 +21,43 @@
                 <p class="subtitle">Configura tu labor para empezar a recibir ofertas</p>
             </div>
 
-            <form action="../../backend/perfil-proceso.php" method="POST" enctype="multipart/form-data">
-                
+            <form id="form-perfil-trabajador" enctype="multipart/form-data">
                 <div class="photo-section">
                     <div class="avatar-wrapper">
-                        <img src="" alt="Vista previa" id="img-preview">
+                        <img src="" alt="Vista previa" id="img-preview" style="display:none;">
                         <label for="upload-photo" class="btn-camera"><i class="fas fa-camera"></i></label>
-                        <input type="file" id="upload-photo" name="foto_perfil" hidden>
+                        <input type="file" id="upload-photo" name="foto" accept="image/*" hidden>
                     </div>
                     <p class="photo-hint">Sube tu foto de perfil</p>
                 </div>
 
                 <div class="form-group">
-                    <label class="label-neon"><i class="fas fa-map-marker-alt"></i> Dirección de Residencia</label>
-                    <input type="text" name="direccion" placeholder="Ej: Calle 20 #15-30, Tunja" required class="input-dark">
+                    <label class="label-neon"><i class="fas fa-briefcase"></i> Profesión u Oficio</label>
+                    <input type="text" name="profesion" placeholder="Ej: Electricista, Desarrollador" required class="input-dark">
                 </div>
 
-                <fieldset class="neon-container">
-                    <legend class="legend-neon"><i class="fas fa-calendar-alt"></i> DISPONIBILIDAD HORARIA</legend>
-                    
-                    <div class="days-flex">
-                        <label class="day-item">L <input type="checkbox" name="dias[]" value="L"></label>
-                        <label class="day-item">M <input type="checkbox" name="dias[]" value="M"></label>
-                        <label class="day-item">M <input type="checkbox" name="dias[]" value="X"></label>
-                        <label class="day-item">J <input type="checkbox" name="dias[]" value="J"></label>
-                        <label class="day-item">V <input type="checkbox" name="dias[]" value="V"></label>
-                        <label class="day-item">S <input type="checkbox" name="dias[]" value="S"></label>
-                        <label class="day-item">D <input type="checkbox" name="dias[]" value="D"></label>
-                    </div>
+                <div class="form-group">
+                    <label class="label-neon"><i class="fas fa-history"></i> Años de Experiencia</label>
+                    <input type="number" name="experiencia_anios" placeholder="Ej: 5" required class="input-dark">
+                </div>
 
-                    <div id="wrapper-horarios">
-                        <div class="row-dinamica">
-                            <div class="time-box"><span>De:</span> <input type="time" name="h_ini[]"></div>
-                            <div class="time-box"><span>A:</span> <input type="time" name="h_fin[]"></div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-add-item" onclick="addHorario()">
-                        <i class="fas fa-plus-circle"></i> Añadir otro rango
-                    </button>
-                </fieldset>
+                <div class="form-group">
+                    <label class="label-neon"><i class="fas fa-clock"></i> Disponibilidad</label>
+                    <select name="disponibilidad" class="input-dark select-dark">
+                        <option value="Tiempo Completo">Tiempo Completo</option>
+                        <option value="Medio Tiempo">Medio Tiempo</option>
+                        <option value="Fines de Semana">Fines de Semana</option>
+                    </select>
+                </div>
 
-                <fieldset class="neon-container">
-                    <legend class="legend-neon"><i class="fas fa-tools"></i> ESPECIALIDADES</legend>
-                    <div id="wrapper-labores">
-                        <div class="row-dinamica">
-                            <input type="text" name="labor[]" placeholder="Labor (Ej: Electricista)" class="input-dark flex-3">
-                            <input type="number" name="exp[]" placeholder="Años" class="input-dark flex-1">
-                        </div>
-                    </div>
-                    <button type="button" class="btn-add-item" onclick="addLabor()">
-                        <i class="fas fa-plus-circle"></i> Añadir labor
-                    </button>
-                </fieldset>
+                <div class="form-group">
+                    <label class="label-neon"><i class="fas fa-align-left"></i> Descripción del Perfil</label>
+                    <textarea name="descripcion_perfil" placeholder="Cuéntales a tus clientes sobre tu trabajo..." required class="input-dark" style="min-height: 100px; resize: vertical;"></textarea>
+                </div>
 
                 <button type="submit" class="btn-main-neon">
                     Continuar a Métodos de Pago <i class="fas fa-arrow-right"></i>
                 </button>
-
             </form>
         </section>
     </main>

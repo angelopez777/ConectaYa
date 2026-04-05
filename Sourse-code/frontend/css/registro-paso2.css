@@ -1,7 +1,6 @@
-/* =========================================
-   ESTILO: REGISTRO PASO 2 (CORREGIDO)
-   Ajuste: Botón interno y espaciado limpio
-   ========================================= */
+/* PROYECTO: ConectaYa 
+    ESTILO: Dark Premium con Neón Morado
+*/
 
 :root {
     --bg-negro: #0a0a0c;
@@ -10,108 +9,149 @@
     --morado-glow: rgba(168, 85, 247, 0.4);
     --texto-blanco: #ffffff;
     --texto-gris: #94a3b8;
-    --input-fill: #1a1a1e;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     background-color: var(--bg-negro);
     color: var(--texto-blanco);
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    min-height: 100vh;
 }
 
-/* --- TARJETA --- */
 .card-registro {
     background-color: var(--tarjeta-bg);
     border-radius: 24px;
-    padding: 55px 45px 45px 45px; /* Más espacio arriba para el botón volver */
-    width: 100%;
-    max-width: 550px;
-    position: relative;
+    padding: 50px 40px;
+    width: 90%;
+    max-width: 480px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* --- BOTÓN VOLVER INTERNO --- */
+/* CENTRADO DE TEXTOS INICIALES */
+.header-registro {
+    text-align: center; /* Aquí centramos el logo y textos */
+    margin-bottom: 35px;
+}
+
+.logo-texto {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.logo-texto span { color: var(--morado-neon); }
+
+.tagline {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.instruccion {
+    color: var(--texto-gris);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* BOTÓN VOLVER */
 .btn-volver-interno {
     position: absolute;
     top: 25px;
-    left: 30px;
+    left: 25px;
     color: var(--texto-gris);
     text-decoration: none;
     font-size: 0.85rem;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 5px;
     transition: 0.3s;
 }
 
-.btn-volver-interno:hover { color: var(--texto-blanco); }
+.btn-volver-interno:hover { color: var(--morado-neon); }
 
-/* --- CABECERA --- */
-.header-registro { margin-bottom: 35px; }
+/* TARJETAS DE ROL */
+.opciones-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+}
 
-.logo-texto { font-size: 2.2rem; font-weight: 800; margin-bottom: 25px; }
-.logo-texto span { color: var(--morado-neon); }
-
-.tagline { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; display: block; }
-.instruccion { color: var(--texto-gris); font-size: 0.9rem; line-height: 1.4; }
-
-/* --- ROLES --- */
-.opciones-grid { display: flex; flex-direction: column; gap: 15px; margin-bottom: 35px; }
-.tarjeta-rol { cursor: pointer; display: block; }
 .tarjeta-rol input { display: none; }
 
 .rol-diseno {
-    background-color: var(--input-fill);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 18px;
+    background: #1a1a1e;
+    border: 2px solid transparent;
+    border-radius: 18px;
+    padding: 22px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    text-align: left;
-    transition: 0.3s ease;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ICONOS SECCIÓN */
-.icon-rol {
-    width: 45px; height: 45px;
-    background: rgba(168, 85, 247, 0.1);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--morado-neon);
+.rol-diseno:hover {
+    background: #222226;
+    border-color: rgba(168, 85, 247, 0.3);
 }
 
-.info-rol h3 { font-size: 1rem; margin-bottom: 3px; }
-.info-rol p { font-size: 0.8rem; color: var(--texto-gris); }
-
-/* ESTADO SELECCIONADO */
 .tarjeta-rol input:checked + .rol-diseno {
     border-color: var(--morado-neon);
-    background: rgba(168, 85, 247, 0.05);
-    box-shadow: 0 0 15px var(--morado-glow);
+    box-shadow: 0 0 20px var(--morado-glow);
+    background: rgba(168, 85, 247, 0.08);
+}
+
+.icon-rol {
+    font-size: 1.6rem;
+    color: var(--morado-neon);
+    background: rgba(168, 85, 247, 0.1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.info-rol h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.info-rol p {
+    font-size: 0.85rem;
+    color: var(--texto-gris);
+    line-height: 1.3;
 }
 
 /* BOTÓN SIGUIENTE */
 .btn-siguiente {
     width: 100%;
-    background-color: var(--morado-neon);
+    background: var(--morado-neon);
     color: white;
     border: none;
     padding: 16px;
     border-radius: 14px;
     font-weight: 700;
     font-size: 1rem;
+    letter-spacing: 1px;
     cursor: pointer;
-    box-shadow: 0 10px 20px var(--morado-glow);
-    transition: transform 0.2s;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px var(--morado-glow);
 }
 
-.btn-siguiente:hover { transform: translateY(-2px); }
+.btn-siguiente:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}

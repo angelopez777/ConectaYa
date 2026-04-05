@@ -1,66 +1,47 @@
 <?php
-require_once '../config/conexion.php';
-session_start();
+header('Content-Type: application/json');
+include_once '../config/conexion.php';
+include_once '../config/session-start.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_usuario = $_SESSION['user_id'] ?? null;
+if (!isset($_SESSION['id_usuario'])) {
+    echo json_encode(['success' => false, 'message' => 'Sesión no iniciada']);
+    exit;
+}
 
-    if (!$id_usuario) {
-        header("Location: ../../frontend/html/login.html");
-        exit();
-    }
+$id_usuario = $_SESSION['id_usuario'];
 
-    // Procesar Horarios
-    $disponibilidad = [
-        "dias" => $_POST['dias'] ?? [],
-        "rangos" => []
-    ];
+// Captura de datos
+$profesion      = $_POST['profesion'] ?? '';
+$experiencia    = $_POST['experiencia_anios'] ?? '';
+$descripcion    = $_POST['descripcion_perfil'] ?? '';
+$disponibilidad = $_POST['disponibilidad'] ?? 'No definida';
 
-    if (isset($_POST['h_ini'])) {
-        foreach ($_POST['h_ini'] as $i => $h_ini) {
-            if (!empty($h_ini)) {
-                $disponibilidad["rangos"][] = [
-                    "desde" => $h_ini,
-                    "hasta" => $_POST['h_fin'][$i]
-                ];
-            }
-        }
-    }
+if (empty($profesion) || empty($descripcion)) {
+    echo json_encode(['success' => false, 'message' => 'Faltan campos obligatorios']);
+    exit;
+}
 
-    // Procesar Especialidades
-    $labores = [];
-    if (isset($_POST['labor'])) {
-        foreach ($_POST['labor'] as $i => $nombre) {
-            if (!empty($nombre)) {
-                $labores[] = [
-                    "puesto" => $nombre,
-                    "exp" => $_POST['exp'][$i] ?? '0'
-                ];
-            }
-        }
-    }
-
-    $direccion = $_POST['direccion'] ?? '';
-    $horarios_json = json_encode($disponibilidad);
-    $especialidades_json = json_encode($labores);
-    $formacion_json = json_encode($_POST['titulo'] ?? []);
-
-    try {
-        $stmt = $pdo->prepare("INSERT INTO perfiles_trabajador 
-            (id_usuario, direccion, horarios, especialidades, formacion) 
+try {
+    $sql = "INSERT INTO trabajador (id_usuario, profesion, experiencia_anios, descripcion_perfil, disponibilidad) 
             VALUES (?, ?, ?, ?, ?)
             ON DUPLICATE KEY UPDATE 
-            direccion = VALUES(direccion),
-            horarios = VALUES(horarios),
-            especialidades = VALUES(especialidades),
-            formacion = VALUES(formacion)");
+            profesion = VALUES(profesion), 
+            experiencia_anios = VALUES(experiencia_anios), 
+            descripcion_perfil = VALUES(descripcion_perfil), 
+            disponibilidad = VALUES(disponibilidad)";
 
-        $stmt->execute([$id_usuario, $direccion, $horarios_json, $especialidades_json, $formacion_json]);
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("issss", $id_usuario, $profesion, $experiencia, $descripcion, $disponibilidad);
 
-        header("Location: ../../frontend/html/dashboards/inicio-cliente.html");
-        exit();
-
-    } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+    if ($stmt->execute()) {
+        echo json_encode([
+            'success' => true, 
+            'message' => 'Perfil guardado', 
+            'redirect' => 'metodo-pago.html'
+        ]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Error DB: ' . $conexion->error]);
     }
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Fallo: ' . $e->getMessage()]);
 }

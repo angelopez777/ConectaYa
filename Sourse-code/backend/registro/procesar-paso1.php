@@ -1,28 +1,57 @@
 <?php
+/**
+ * PROYECTO: ConectaYa
+ * ARCHIVO: /backend/registro/procesar-paso1.php
+ * DESCRIPCIÓN: Registro inicial con captura de teléfono en el INSERT.
+ */
+
 session_start();
-require_once '../config/conexion.php';
+include_once '../config/conexion.php'; 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
-    $correo = mysqli_real_escape_string($conexion, $_POST['correo']);
-    $telefono = mysqli_real_escape_string($conexion, $_POST['telefono']);
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+header('Content-Type: application/json');
 
-    $check_email = mysqli_query($conexion, "SELECT id_usuario FROM usuario WHERE correo = '$correo'");
-    
-    if (mysqli_num_rows($check_email) > 0) {
-        header("Location: ../../frontend/html/registro.html?error=email_existe");
-        exit();
-    }
+$response = ['success' => false, 'message' => ''];
 
-    $sql = "INSERT INTO usuario (nombre, correo, telefono, password, estado_cuenta) 
-            VALUES ('$nombre', '$correo', '$telefono', '$password', 'Pendiente')";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recibimos los 4 datos del formulario
+    $nombre   = $_POST['nombre'] ?? '';
+    $telefono = $_POST['telefono'] ?? '';
+    $correo   = $_POST['correo'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-    if (mysqli_query($conexion, $sql)) {
-        $_SESSION['user_email'] = $correo;
-        header("Location: ../../frontend/html/registro-paso2.html");
+    // Validación básica: teléfono ahora es obligatorio
+    if (empty($nombre) || empty($correo) || empty($password) || empty($telefono)) {
+        $response['message'] = "Todos los campos son obligatorios.";
     } else {
-        echo "Error: " . mysqli_error($conexion);
+        $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            // CORRECCIÓN: Añadida la columna 'telefono' y un "?" más
+            $sql = "INSERT INTO usuario (nombre, correo, password, telefono, tipo_usuario, estado_cuenta) 
+                    VALUES (?, ?, ?, ?, 'Cliente', 'Pendiente')";
+            
+            $stmt = $conexion->prepare($sql);
+            
+            if ($stmt) {
+                // CORRECCIÓN: "ssss" porque ahora pasamos 4 strings (nombre, correo, pass, tel)
+                $stmt->bind_param("ssss", $nombre, $correo, $pass_hash, $telefono);
+                
+                if ($stmt->execute()) {
+                    // Guardamos el ID en sesión (usa 'id_usuario' para ser consistente con tu DB)
+                    $_SESSION['id_usuario'] = $conexion->insert_id;
+                    
+                    $response['success'] = true;
+                    $response['message'] = "Registro exitoso";
+                } else {
+                    $response['message'] = "El correo ya está registrado o hubo un error.";
+                }
+                $stmt->close();
+            }
+        } catch (mysqli_sql_exception $e) {
+            $response['message'] = "Error en DB: " . $e->getMessage();
+        }
     }
 }
-?>
+
+echo json_encode($response);
+exit();

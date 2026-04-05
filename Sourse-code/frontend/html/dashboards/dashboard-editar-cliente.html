@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa | Editar Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard-editar-cliente.css">
+</head>
+<body class="dark-theme">
+
+    <main class="edit-card-container">
+        <header class="card-header-internal">
+            <a href="dashboard-perfil-cliente.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+            <div class="logo-text">Conecta<span>Ya</span></div>
+        </header>
+
+        <form id="form-editar-usuario" class="edit-form" enctype="multipart/form-data">
+            
+            <div class="profile-photo-section">
+                <div class="avatar-container">
+                    <div class="avatar-wrapper">
+                        <img src="../../../img/perfiles/default.png" id="img-preview" alt="Perfil">
+                        <label for="foto-input" class="camera-btn">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                    </div>
+                    <input type="file" id="foto-input" name="foto" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>NOMBRE COMPLETO</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="input-group">
+                    <label>TELÉFONO</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="input-group full">
+                    <label>DIRECCIÓN DE RESIDENCIA</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <div class="input-group full">
+                    <label>MÉTODO DE PAGO</label>
+                </div>
+                
+                <div class="payment-grid">
+                    <label class="pay-option">
+                        <input type="radio" name="tipo_metodo" value="Tarjeta">
+                        <div class="pay-card-content">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Tarjeta</span>
+                        </div>
+                    </label>
+                    <label class="pay-option">
+                        <input type="radio" name="tipo_metodo" value="Transferencia">
+                        <div class="pay-card-content">
+                            <i class="fas fa-university"></i>
+                            <span>Transferencia</span>
+                        </div>
+                    </label>
+                    <label class="pay-option">
+                        <input type="radio" name="tipo_metodo" value="Efectivo">
+                        <div class="pay-card-content">
+                            <i class="fas fa-coins"></i>
+                            <span>Efectivo</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div id="fields-tarjeta" class="dynamic-fields">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>TITULAR DE LA TARJETA</label>
+                            <input type="text" name="titular" placeholder="Nombre como aparece">
+                        </div>
+                        <div class="input-group">
+                            <label>PROVEEDOR</label>
+                            <input type="text" name="proveedor" placeholder="Ej: Visa, Mastercard">
+                        </div>
+                        <div class="input-group full">
+                            <label>NÚMERO DE TARJETA (ENMASCARADO)</label>
+                            <input type="text" name="numero_cuenta" placeholder="**** **** **** 1234">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fields-transferencia" class="dynamic-fields">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>BANCO / ENTIDAD</label>
+                            <input type="text" name="banco_nombre" placeholder="Ej: Bancolombia, Nequi">
+                        </div>
+                        <div class="input-group full">
+                            <label>NÚMERO DE CUENTA</label>
+                            <input type="text" name="numero_transferencia" placeholder="Número de depósito">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-main-save">
+                <i class="fas fa-check-circle"></i> Guardar Cambios
+            </button>
+        </form>
+    </main>
+
+    <script src="../../js/dashboard-editar-cliente.js"></script>
+</body>
+</html>
