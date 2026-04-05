@@ -1,8 +1,5 @@
 <?php
-/**
- * ConectaYa - Entry Point
- * Redirección automática al frontend
- */
-header("Location: Sourse-code/frontend/html/dashboards/inicio-cliente.html");
+// Redirección a la landing page del proyecto
+header("Location: Sourse-code/frontend/index.html");
 exit();
 ?>
