@@ -1,0 +1,122 @@
+/**
+ * notificaciones-trabajador.css
+ * Diseño enfocado en legibilidad de alertas profesionales
+ */
+
+:root {
+    --bg-main: #0a0a0c;
+    --neon-purple: #a855f7;
+    --neon-purple-glow: rgba(168, 85, 247, 0.4);
+    --card-bg: #121214;
+    --border-soft: rgba(168, 85, 247, 0.1);
+}
+
+.notifications-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilo de cada notificación individual */
+.notification-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.notification-card:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 15px var(--neon-purple-glow);
+    transform: translateY(-2px);
+}
+
+.notification-card.unread::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--neon-purple);
+    box-shadow: 0 0 10px var(--neon-purple);
+}
+
+.notif-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: rgba(168, 85, 247, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon-purple);
+    font-size: 1.2rem;
+}
+
+.notif-content {
+    flex: 1;
+}
+
+.notif-title {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.notif-desc {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.notif-time {
+    color: #555;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* Estado Vacío con Efecto Neón */
+.empty-state {
+    text-align: center;
+    padding: 5rem 0;
+    color: #444;
+}
+
+.empty-icon-glow {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--neon-purple);
+    opacity: 0.2;
+}
+
+.btn-text {
+    background: transparent;
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.85rem;
+}
+
+.btn-text:hover {
+    background: var(--neon-purple);
+    color: #fff;
+    box-shadow: 0 0 15px var(--neon-purple-glow);
+}

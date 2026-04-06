@@ -1,0 +1,173 @@
+/* * Estilos: Editar Perfil Trabajador (V.3)
+ * Identidad: Dark Premium / Neón Morado #a855f7
+ */
+
+:root {
+    --bg-main: #0a0a0c;
+    --card-bg: #121214;
+    --neon-purple: #a855f7;
+    --text-silver: #e2e8f0;
+    --input-bg: #1a1a1c;
+}
+
+body.dark-theme {
+    background-color: var(--bg-main);
+    color: var(--text-silver);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.edit-card-container {
+    background: var(--card-bg);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.card-header-internal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+}
+
+.back-btn {
+    color: var(--neon-purple);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.back-btn:hover { text-shadow: 0 0 10px var(--neon-purple); }
+
+.logo-text span { color: var(--neon-purple); font-weight: bold; }
+
+/* Avatar Section */
+.avatar-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+#img-preview {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--neon-purple);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.camera-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--neon-purple);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Form Layout */
+.form-section-title {
+    color: var(--neon-purple);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 1.5rem 0 1rem;
+    font-weight: 700;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.input-group.full { grid-column: span 2; }
+
+.input-group label {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    color: var(--text-dim);
+}
+
+input, textarea {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+/* Payment Options */
+.payment-grid {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.pay-option input { display: none; }
+
+.pay-card-content {
+    background: var(--input-bg);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+}
+
+.pay-option input:checked + .pay-card-content {
+    border-color: var(--neon-purple);
+    background: rgba(168, 85, 247, 0.05);
+    color: var(--neon-purple);
+}
+
+.btn-main-save {
+    width: 100%;
+    background: var(--neon-purple);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 2rem;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+    transition: 0.3s;
+}
+
+.btn-main-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(168, 85, 247, 0.5);
+}

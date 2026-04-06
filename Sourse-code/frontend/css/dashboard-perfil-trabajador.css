@@ -1,0 +1,118 @@
+/* * Estilos: Perfil Trabajador (V.3)
+ * Identidad: Dark Premium / Neón Morado #a855f7
+ */
+
+.specialty-label {
+    color: var(--neon-purple);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 5px 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.profile-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.premium-card {
+    background: #121214;
+    border: 1px solid rgba(168, 85, 247, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+.premium-card:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+.profile-info-main {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.avatar-circle {
+    width: 140px;
+    height: 140px;
+    border: 3px solid var(--neon-purple);
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+.stats-pills {
+    display: flex;
+    gap: 10px;
+}
+
+.pill {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid var(--neon-purple);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--neon-purple);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.info-item label {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.info-item p {
+    font-size: 1rem;
+    color: #e2e8f0;
+}
+
+.info-item.full {
+    grid-column: span 2;
+}
+
+.btn-neon-purple {
+    background: var(--neon-purple);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    transition: 0.3s;
+}
+
+.btn-neon-purple:hover {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+    transform: translateY(-2px);
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.empty-msg {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+}
+
+.empty-msg i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}

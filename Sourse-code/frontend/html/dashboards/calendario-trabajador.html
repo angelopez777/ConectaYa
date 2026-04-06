@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa | Agenda de Servicios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/dashboard-trabajador.css">
+    <link rel="stylesheet" href="../../css/calendario-trabajador.css">
+</head>
+<body class="dark-theme">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <p class="menu-label">Principal</p>
+                <a href="inicio-trabajador.html" class="menu-item">
+                    <i class="fas fa-chart-line"></i> <span>Mi Actividad</span>
+                </a>
+                <a href="dashboard-perfil-trabajador.html" class="menu-item">
+                    <i class="fas fa-id-card"></i> <span>Perfil Profesional</span>
+                </a>
+                <a href="mensajes-cliente.html" class="menu-item">
+                    <i class="fas fa-comments"></i> <span>Mensajes</span>
+                </a>
+                
+                <p class="menu-label">Gestión de Servicios</p>
+                <a href="calendario-trabajador.html" class="menu-item active">
+                    <i class="fas fa-calendar-check"></i> <span>Mi Agenda</span>
+                </a>
+                <a href="contratos-trabajador.html" class="menu-item">
+                    <i class="fas fa-file-contract"></i> <span>Mis Contratos</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button class="btn-role-toggle" onclick="window.location.href='inicio-cliente.html'">
+                    <i class="fas fa-exchange-alt"></i> Cambiar a Cliente
+                </button>
+                <a href="../../../backend/config/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-text">
+                    <h1 class="neon-text">Agenda Profesional</h1>
+                    <p>Gestiona tus horarios y confirma visitas técnicas</p>
+                </div>
+                <div class="agenda-stats">
+                    <span class="badge-neon">Pendientes: <b id="count-pending">0</b></span>
+                </div>
+            </header>
+
+            <div class="calendar-grid">
+                <section class="calendar-card-premium">
+                    <div id="calendar"></div>
+                </section>
+
+                <section class="appointment-panel">
+                    <div class="panel-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Gestión del Servicio</h3>
+                    </div>
+                    <div id="event-details" class="panel-body">
+                        <div class="placeholder-content">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <p>Selecciona un servicio programado para ver los datos del cliente y ubicación.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/calendario-trabajador.js"></script>
+</body>
+</html>

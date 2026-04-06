@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes Clientes | ConectaYa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard-trabajador.css">
+    <link rel="stylesheet" href="../../css/mensajes-trabajador.css">
+</head>
+<body class="dark-theme">
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-neon">Conecta<span>Ya</span></div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <p class="menu-label">Panel Profesional</p>
+                <a href="inicio-trabajador.html" class="menu-item">
+                    <i class="fas fa-chart-line"></i> <span>Panel de Control</span>
+                </a>
+                <a href="dashboard-perfil-trabajador.html" class="menu-item">
+                    <i class="fas fa-user-tie"></i> <span>Mi Perfil Laboral</span>
+                </a>
+                <a href="mensajes-trabajador.html" class="menu-item active">
+                    <i class="fas fa-comments"></i> <span>Chat Clientes</span>
+                </a>
+                
+                <p class="menu-label">Operaciones</p>
+                <a href="agenda-trabajador.html" class="menu-item"><i class="fas fa-calendar-check"></i> <span>Agenda</span></a>
+                <a href="servicios-pendientes.html" class="menu-item"><i class="fas fa-tools"></i> <span>Servicios en Curso</span></a>
+                <a href="historial-pagos.html" class="menu-item"><i class="fas fa-wallet"></i> <span>Mis Ingresos</span></a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button class="btn-role" onclick="window.location.href='inicio-cliente.html'">
+                    <i class="fas fa-user-friends"></i> Cambiar a Cliente
+                </button>
+                <a href="../../../backend/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="chat-wrapper-premium">
+                <section class="contacts-panel">
+                    <div class="search-box-container">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="buscar-chat" placeholder="Buscar cliente o servicio...">
+                        </div>
+                    </div>
+                    <div id="lista-chats" class="contacts-scroll">
+                        <div class="status-msg">Cargando chats de clientes...</div>
+                    </div>
+                </section>
+
+                <section class="chat-window">
+                    <header class="chat-header">
+                        <div class="chat-info">
+                            <h2 id="chat-receptor-nombre">Seleccione un chat para responder</h2>
+                            <div id="status-text" class="status-indicator">
+                                <i class="fas fa-circle"></i> <span id="label-status">En espera de cliente</span>
+                            </div>
+                        </div>
+                        <button id="refresh-chat" class="refresh-btn" title="Actualizar mensajes">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </header>
+
+                    <div id="chat-box" class="messages-display">
+                        <div class="empty-state">
+                            <i class="fas fa-comments"></i>
+                            <p>Aquí aparecerá la conversación con el cliente seleccionado</p>
+                        </div>
+                    </div>
+
+                    <footer class="chat-input-area">
+                        <form id="form-mensaje" class="input-form">
+                            <input type="hidden" id="id_solicitud_actual">
+                            <input type="file" id="input-foto" accept="image/*" style="display: none;">
+                            
+                            <button type="button" id="btn-foto" class="btn-neon-icon">
+                                <i class="fas fa-camera"></i>
+                            </button>
+
+                            <div class="field-wrapper">
+                                <input type="text" id="input-contenido" placeholder="Escribe tu respuesta profesional..." autocomplete="off" disabled>
+                            </div>
+
+                            <button type="submit" id="btn-enviar" class="send-btn" disabled>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </footer>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/mensajes-trabajador.js"></script>
+</body>
+</html>

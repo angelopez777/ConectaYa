@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaYa | Editar Perfil Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/dashboard-editar-trabajador.css">
+</head>
+<body class="dark-theme">
+
+    <main class="edit-card-container">
+        <header class="card-header-internal">
+            <a href="dashboard-perfil-trabajador.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Volver al Perfil
+            </a>
+            <div class="logo-text">Conecta<span>Ya</span></div>
+        </header>
+
+        <form id="form-editar-trabajador" class="edit-form" enctype="multipart/form-data">
+            
+            <div class="profile-photo-section">
+                <div class="avatar-container">
+                    <div class="avatar-wrapper">
+                        <img src="../../../img/perfiles/default-worker.png" id="img-preview" alt="Perfil Profesional">
+                        <label for="foto-input" class="camera-btn">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                    </div>
+                    <input type="file" id="foto-input" name="foto" accept="image/*" hidden>
+                    <p class="photo-hint">Sube una foto clara para generar confianza.</p>
+                </div>
+            </div>
+
+            <div class="form-section-title">Información General</div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>NOMBRE COMPLETO</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej: Angel Lopez" required>
+                </div>
+                <div class="input-group">
+                    <label>TELÉFONO DE CONTACTO</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+57 ..." required>
+                </div>
+                <div class="input-group full">
+                    <label>UBICACIÓN (CIUDAD / BARRIO)</label>
+                    <input type="text" id="ubicacion" name="ubicacion" placeholder="Ej: Tunja, Boyacá" required>
+                </div>
+            </div>
+
+            <div class="form-section-title">Perfil Laboral</div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>ESPECIALIDAD / OFICIO</label>
+                    <input type="text" id="especialidad" name="especialidad" placeholder="Ej: Electricista, Desarrollador" required>
+                </div>
+                <div class="input-group">
+                    <label>TARIFA POR HORA (COP)</label>
+                    <input type="number" id="precio_hora" name="precio_hora" placeholder="Monto en pesos" required>
+                </div>
+                <div class="input-group full">
+                    <label>DESCRIPCIÓN DE EXPERIENCIA</label>
+                    <textarea id="experiencia" name="experiencia" rows="4" placeholder="Cuéntale a tus clientes sobre tus años de labor y habilidades..."></textarea>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <div class="form-section-title">Método de Recibo de Pagos</div>
+                <div class="payment-grid">
+                    <label class="pay-option">
+                        <input type="radio" name="tipo_metodo" value="Transferencia" checked>
+                        <div class="pay-card-content">
+                            <i class="fas fa-university"></i>
+                            <span>Transferencia</span>
+                        </div>
+                    </label>
+                    <label class="pay-option">
+                        <input type="radio" name="tipo_metodo" value="Efectivo">
+                        <div class="pay-card-content">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <span>Efectivo</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div id="fields-transferencia" class="dynamic-fields">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>BANCO / APP (Nequi, Daviplata, etc.)</label>
+                            <input type="text" name="banco_nombre" placeholder="Nombre de la entidad">
+                        </div>
+                        <div class="input-group">
+                            <label>NÚMERO DE CUENTA</label>
+                            <input type="text" name="numero_cuenta" placeholder="Número para recibir pagos">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-main-save">
+                <i class="fas fa-save"></i> Actualizar Perfil Profesional
+            </button>
+        </form>
+    </main>
+
+    <script src="../../js/dashboard-editar-trabajador.js"></script>
+</body>
+</html>
