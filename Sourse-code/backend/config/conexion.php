@@ -9,7 +9,7 @@
 $host = "sql111.infinityfree.com"; // 👈 Mira tu panel, suele ser sqlXXX.epizy.com o ftpupload.net
 $user = "if0_41587753";     // 👈 Tu usuario de MySQL que aparece en el panel
 $pass = "angelopez30";  // 👈 La clave que usaste para el FTP (Secrets)
-$db   = "if0_41587753_conectay"; // 👈 El nombre COMPLETO de la DB que creaste en el panel
+$db   = "if0_41587753_conectaya"; // 👈 El nombre COMPLETO de la DB que creaste en el panel
 
 $conexion = mysqli_connect($host, $user, $pass, $db);
 
