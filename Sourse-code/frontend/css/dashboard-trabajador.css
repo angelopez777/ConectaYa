@@ -1,37 +1,154 @@
-/* REGLA DE ORO: FLEXBOX PARA EL LAYOUT */
-.dashboard-layout {
-    display: flex; /* Esto pone el sidebar al lado del contenido */
-    height: 100vh;
-    background-color: #0a0a0c;
+/* Registro de Colores y Variables - ConectaYa */
+:root {
+    --bg-main: #0a0a0c;
+    --bg-card: #121214;
+    --neon-purple: #a855f7;
+    --neon-purple-dim: rgba(168, 85, 247, 0.3);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --shadow-neon: 0 0 15px var(--neon-purple-dim);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+}
+
+/* Sidebar Estilo Premium */
 .sidebar {
     width: 280px;
-    background: #111114;
-    border-right: 1px solid rgba(168, 85, 247, 0.2);
+    height: 100vh;
+    background: var(--bg-card);
+    border-right: 1px solid var(--neon-purple-dim);
+    padding: 2rem;
+    position: fixed;
+}
+
+.logo-neon {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+}
+
+.logo-neon span {
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+
+.menu-label {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.menu-item {
     display: flex;
-    flex-direction: column;
-    padding: 2rem 1.5rem;
+    align-items: center;
+    gap: 12px;
+    padding: 0.8rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
 }
 
-.main-viewport {
-    flex: 1; /* Esto hace que el contenido ocupe el resto del ancho */
-    padding: 3rem;
-    overflow-y: auto;
+.menu-item:hover, .menu-item.active {
+    background: rgba(168, 85, 247, 0.1);
+    color: var(--neon-purple);
+    box-shadow: var(--shadow-neon);
 }
 
-/* ESTÉTICA NEÓN */
-.avatar-neon {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    border: 2px solid #a855f7;
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+/* Contenedor Principal */
+.main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    padding: 2.5rem;
 }
 
-.card-glass {
-    background: linear-gradient(145deg, #16161a, #0a0a0c);
-    border: 1px solid rgba(168, 85, 247, 0.2);
-    border-radius: 20px;
-    padding: 25px;
+/* Encabezado */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.neon-text {
+    color: var(--neon-purple);
+    text-shadow: 0 0 5px var(--neon-purple);
+}
+
+/* Grid de Estadísticas */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(168, 85, 247, 0.1);
+    padding: 1.5rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    color: var(--neon-purple);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Tarjetas de Contenido */
+.premium-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+/* Botones */
+.btn-action-neon {
+    background: var(--neon-purple);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-neon);
+    transition: 0.3s;
+}
+
+.btn-action-neon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--neon-purple);
 }
