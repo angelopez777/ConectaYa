@@ -16,6 +16,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Subimos el contenido de Sourse-code a la carpeta htdocs
           local-dir: ./Sourse-code/
-          server-dir: /htdocs/
+          server-dir: /htdocs/Sourse-code/
+          # Estas líneas ayudan con los servidores lentos:
+          timeout: 90000
+          protocol: ftp
