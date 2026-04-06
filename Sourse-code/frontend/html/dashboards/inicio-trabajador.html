@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConectaYa | Dashboard</title>
+    <title>ConectaYa | Dashboard Trabajador</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/dashboard-cliente.css">
+    <link rel="stylesheet" href="../../css/dashboard-trabajador.css">
 </head>
 <body class="dark-theme">
 
@@ -18,84 +18,109 @@
 
             <nav class="sidebar-menu">
                 <p class="menu-label">Principal</p>
-                <a href="inicio-cliente.html" class="menu-item active">
-                    <i class="fas fa-home"></i> <span>Inicio</span>
+                <a href="inicio-trabajador.html" class="menu-item active">
+                    <i class="fas fa-chart-line"></i> <span>Mi Actividad</span>
                 </a>
-                <a href="../perfil-cliente.html" class="menu-item">
-                    <i class="fas fa-user"></i> <span>Mi Perfil</span>
+                <a href="dashboard-perfil-trabajador.html" class="menu-item">
+                    <i class="fas fa-id-card"></i> <span>Perfil Profesional</span>
                 </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-envelope"></i> <span>Mensajes</span>
+                <a href="mensajes-cliente.html" class="menu-item">
+                    <i class="fas fa-comments"></i> <span>Mensajes</span>
                     <span class="badge-neon" id="msg-badge">0</span>
                 </a>
 
-                <p class="menu-label">Gestión</p>
-                <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> <span>Calendario</span></a>
-                <a href="#" class="menu-item"><i class="fas fa-file-invoice"></i> <span>Mis Contratos</span></a>
-                <a href="#" class="menu-item"><i class="fas fa-bell"></i> <span>Notificaciones</span></a>
+                <p class="menu-label">Gestión de Servicios</p>
+                <a href="calendario-trabajador.html" class="menu-item">
+                    <i class="fas fa-calendar-check"></i> <span>Agenda</span>
+                </a>
+                <a href="contratos-trabajador.html" class="menu-item">
+                    <i class="fas fa-file-contract"></i> <span>Mis Contratos</span>
+                </a>
+                <a href="notificaciones-cliente.html" class="menu-item">
+                    <i class="fas fa-bell"></i> <span>Notificaciones</span>
+                </a>
             </nav>
 
             <div class="sidebar-bottom">
-                <button class="btn-role"><i class="fas fa-exchange-alt"></i> Cambiar a Trabajador</button>
-                <a href="../../../backend/logout.php" class="logout-link"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                <button class="btn-role-toggle" onclick="window.location.href='inicio-cliente.html'">
+                    <i class="fas fa-user-friends"></i> Cambiar a Cliente
+                </button>
+                <a href="../../../backend/config/logout.php" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
             </div>
         </aside>
 
         <main class="main-content">
             <header class="content-header">
-                <h1 class="welcome-text">Hola, <span class="neon-text" id="user-name">Usuario</span> 👋</h1>
+                <h1 class="welcome-text">Panel Profesional, <span class="neon-text" id="user-name">Trabajador</span> 🛠️</h1>
+                <div class="status-badge" id="availability-status">
+                    <span class="dot online"></span> Disponible
+                </div>
             </header>
 
             <section class="search-section">
                 <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="¿Qué servicio necesitas hoy? (Ej: Plomero, Electricista...)" id="main-search">
-                    <button class="btn-search-action">Publicar Oferta</button>
+                    <div class="search-input-group">
+                        <i class="fas fa-briefcase search-icon"></i>
+                        <input type="text" placeholder="Buscar nuevas oportunidades de trabajo..." id="worker-search">
+                    </div>
+                    <button class="btn-action-neon">Explorar Ofertas</button>
                 </div>
             </section>
 
             <div class="dashboard-grid">
                 <div class="grid-main">
                     <div class="stats-row">
-                        <div class="stat-glass-card">
-                            <div class="stat-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="stat-text">
-                                <span class="stat-number" id="solicitudes-val">0</span>
-                                <span class="stat-desc">Solicitudes Activas</span>
+                        <div class="stat-card-glass">
+                            <div class="stat-icon"><i class="fas fa-check-double"></i></div>
+                            <div class="stat-data">
+                                <span class="stat-number" id="services-count">0</span>
+                                <span class="stat-desc">Servicios Realizados</span>
                             </div>
                         </div>
-                        <div class="stat-glass-card">
+                        <div class="stat-card-glass">
                             <div class="stat-icon"><i class="fas fa-star"></i></div>
-                            <div class="stat-text">
-                                <span class="stat-number" id="rating-val">0.0</span>
-                                <span class="stat-desc">Calificación Promedio</span>
+                            <div class="stat-data">
+                                <span class="stat-number" id="rating-avg">0.0</span>
+                                <span class="stat-desc">Calificación Total</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="premium-card">
-                        <div class="card-title"><h3><i class="fas fa-clock"></i> Próximos Encuentros</h3></div>
-                        <div class="card-body empty-state">
-                            <i class="fas fa-calendar-times" style="font-size: 3rem; opacity: 0.2; margin-bottom: 15px;"></i>
-                            <p>No tienes servicios programados para esta semana.</p>
+                    <div class="premium-card main-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-calendar-alt"></i> Próximos Servicios</h3>
+                        </div>
+                        <div class="card-content" id="services-list">
+                            <div class="empty-state">
+                                <i class="fas fa-tasks"></i>
+                                <p>No tienes servicios pendientes para hoy.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid-side">
-                    <div class="premium-card widget">
-                        <div class="card-title"><h3><i class="fas fa-comment-alt"></i> Mensajes</h3></div>
-                        <div id="recent-chats" class="chat-list">
-                            <p class="empty-msg">No tienes chats pendientes</p>
+                    <div class="premium-card widget-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Chats de Clientes</h3>
                         </div>
-                        <button class="btn-card-action">Ver bandeja de entrada</button>
+                        <div id="recent-chats-list" class="widget-content">
+                            <p class="empty-msg">Sin mensajes nuevos</p>
+                        </div>
+                        <button onclick="window.location.href='mensajes-cliente.html'" class="btn-ghost-purple">Bandeja de Entrada</button>
                     </div>
 
-                    <div class="premium-card widget">
-                        <div class="card-title"><h3><i class="fas fa-lightbulb"></i> Avisos</h3></div>
-                        <div class="notif-bubble">
-                            <i class="fas fa-info-circle"></i>
-                            <p>Completa tu dirección para recibir mejores ofertas.</p>
+                    <div class="premium-card widget-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-lightbulb"></i> Sugerencia</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="info-alert">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Mantén tu descripción actualizada para atraer más clientes.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,6 +128,6 @@
         </main>
     </div>
 
-    <script src="../../js/dashboard-cliente.js"></script>
+    <script src="../../js/dashboard-trabajador.js"></script>
 </body>
 </html>
