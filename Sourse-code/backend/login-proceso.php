@@ -29,18 +29,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: ../frontend/html/dashboards/inicio-trabajador.html");
             }
             exit();
-        }
-    }
-    header("Location: ../frontend/html/login.html?error=auth");
-    exit();
-
-    // ... después de verificar el password y crear la $_SESSION ...
-    $_SESSION['id_usuario'] = $datos_user['id_usuario'];
-    $_SESSION['nombre'] = $datos_user['nombre'];
-
-    // Ejecutar el check de bienvenida automáticamente
-    require_once('../notificaciones/check-bienvenida.php');
-
-    header("Location: ../../frontend/html/dashboards/inicio-cliente.html");
-    exit();    
 }
+
