@@ -1,0 +1,119 @@
+/* FORZAR RESET DE BOTONES EN EL CONTENIDO PRINCIPAL */
+#contracts-page button, 
+#contracts-page .btn-explore-neon, 
+#contracts-page .btn-sync-neon {
+    all: unset !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Segoe UI', Roboto, sans-serif !important;
+    transition: all 0.3s ease !important;
+}
+
+/* COLORES Y TEXTOS */
+.purple-neon {
+    color: #a855f7 !important;
+    text-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+}
+
+.premium-title {
+    font-size: 2.2rem;
+    color: #fff;
+    margin: 0;
+}
+
+.premium-subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* DISEÑO DE TARJETA ESTILO DASHBOARD */
+.premium-card {
+    background: #0d0d0d !important;
+    border: 1px solid #1e1e1e !important;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+}
+
+.icon-purple {
+    color: #a855f7;
+    font-size: 1.4rem;
+}
+
+/* BOTÓN SINCRONIZAR (BORDE MORADO) */
+.btn-sync-neon {
+    border: 1px solid #a855f7 !important;
+    color: #fff !important;
+    padding: 8px 20px !important;
+    border-radius: 8px !important;
+    font-size: 0.85rem !important;
+}
+
+.btn-sync-neon:hover {
+    background: rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.btn-sync-neon i { margin-right: 8px; }
+
+/* ESTADO VACÍO (EL ICONO DE LA CARPETA) */
+.empty-state-wrapper {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.icon-box-neon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.icon-box-neon i {
+    font-size: 2.2rem;
+    color: #222; /* Color oscuro como en tu dashboard */
+}
+
+.empty-text {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* BOTÓN EXPLORAR (MORADO SÓLIDO PREMIUM) */
+.btn-explore-neon {
+    background: #a855f7 !important;
+    color: #fff !important;
+    padding: 12px 35px !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+}
+
+.btn-explore-neon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
+}

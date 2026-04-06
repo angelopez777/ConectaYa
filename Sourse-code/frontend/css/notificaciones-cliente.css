@@ -1,0 +1,261 @@
+:root {
+    --bg-dark: #050505;
+    --card-pill: #0d0d0d;
+    --neon-purple: #a855f7;
+    --text-dim: #aaa;
+    --border-soft: #1f1f1f;
+}
+
+.main-content { padding: 40px; }
+
+.header-title-box h1 { font-size: 2rem; font-weight: 800; margin-bottom: 5px; }
+
+.btn-pill-outline {
+    background: transparent;
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-pill-outline:hover {
+    background: var(--neon-purple);
+    color: white;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+.notifications-list-pill {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 1000px;
+    margin-top: 30px;
+}
+
+/* FILA ESTILO PÍLDORA - IGUAL A CONTRATOS */
+.notification-item-pill {
+    background: var(--card-pill);
+    border: 1px solid var(--border-soft);
+    padding: 18px 35px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.notification-item-pill:hover {
+    border-color: var(--neon-purple);
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.notification-item-pill.unread {
+    border-left: 5px solid var(--neon-purple);
+    background: rgba(168, 85, 247, 0.03);
+}
+
+.pill-info h3 { color: #fff; font-size: 1rem; margin-bottom: 3px; }
+.pill-info p { color: var(--text-dim); font-size: 0.9rem; }
+.pill-time { color: #555; font-size: 0.75rem; display: block; margin-top: 5px; }
+
+.btn-action-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #222;
+    background: #111;
+    color: var(--neon-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-action-circle:hover {
+    background: var(--neon-purple);
+    color: #fff;
+    border-color: var(--neon-purple);
+}
+
+.empty-state-pill {
+    text-align: center;
+    padding: 60px;
+    border-radius: 30px;
+    border: 1px dashed #222;
+    color: #444;
+}
+
+.fa-spinner { color: var(--neon-purple); font-size: 2rem; margin-bottom: 10px; }
+
+/* DISEÑO PREMIUM CONECTAYA - ANGEL LOPEZ */
+
+.notificacion-item {
+    background: #111114;
+    border: 1px solid #222;
+    border-radius: 60px; /* Estilo píldora idéntico a Contratos */
+    padding: 15px 30px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s ease;
+}
+
+.notificacion-item:hover {
+    border-color: #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+    transform: scale(1.01);
+}
+
+.notificacion-item.pendiente {
+    border-left: 5px solid #a855f7;
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.05) 0%, #111114 100%);
+}
+
+.info-notificacion {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icono-neon {
+    color: #a855f7;
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 5px #a855f7);
+}
+
+.texto-notificacion h4 {
+    color: #fff;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.texto-notificacion p {
+    color: #bbb;
+    margin: 2px 0;
+    font-size: 0.9rem;
+}
+
+.texto-notificacion small {
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.btn-check-neon {
+    background: #0a0a0c;
+    border: 1px solid #333;
+    color: #a855f7;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-check-neon:hover {
+    background: #a855f7;
+    color: #fff;
+    box-shadow: 0 0 15px #a855f7;
+}
+
+.error-neon {
+    color: #ff4b4b;
+    border: 1px dashed #ff4b4b;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* DISEÑO DARK NEÓN MORADO - CONECTAYA */
+.notif-pill {
+    background: #0d0d0f;
+    border: 1px solid #1a1a1d;
+    border-radius: 50px; /* Forma de píldora */
+    padding: 15px 35px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.notif-pill:hover {
+    border-color: #a855f7;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+    transform: translateX(10px);
+}
+
+.notif-pill.unread {
+    border-left: 4px solid #a855f7;
+}
+
+.pill-body {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.neon-icon {
+    color: #a855f7;
+    filter: drop-shadow(0 0 5px #a855f7);
+}
+
+.pill-text strong { color: #fff; display: block; }
+.pill-text p { color: #888; font-size: 0.9rem; margin: 0; }
+.pill-time { color: #444; font-size: 0.7rem; }
+
+.error-glow {
+    color: #ff4d4d;
+    text-align: center;
+    padding: 20px;
+    border: 1px dashed #ff4d4d;
+    border-radius: 20px;
+}
+
+/* DISEÑO DE PÍLDORAS NEÓN - CONECTAYA */
+.notif-pill-premium {
+    background: #0a0a0c;
+    border: 1px solid #1a1a1d;
+    border-radius: 60px; /* Forma de píldora extrema */
+    padding: 18px 40px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.notif-pill-premium.active-neon {
+    border-color: #a855f7;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+}
+
+.pill-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-circle {
+    width: 45px;
+    height: 45px;
+    background: #151518;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a855f7;
+    box-shadow: inset 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.pill-info h4 { color: #fff; margin: 0; font-size: 1rem; }
+.pill-info p { color: #a1a1aa; margin: 0; font-size: 0.85rem; }
+.pill-date { color: #52525b; font-size: 0.75rem; font-weight: 600; }

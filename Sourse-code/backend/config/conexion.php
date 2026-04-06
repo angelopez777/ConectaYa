@@ -2,22 +2,36 @@
 /**
  * PROYECTO: ConectaYa
  * ARCHIVO: backend/config/conexion.php
- * DESCRIPCIÓN: Conexión centralizada adaptada para el servidor InfinityFree.
+ * DESCRIPCIÓN: Conexión híbrida (Localhost / Remoto) con detección automática.
  */
 
-// Datos del servidor remoto (Sustituye 'TU_PASSWORD' y el nombre de la DB)
-$host = "sql111.infinityfree.com"; // 👈 Mira tu panel, suele ser sqlXXX.epizy.com o ftpupload.net
-$user = "if0_41587753";     // 👈 Tu usuario de MySQL que aparece en el panel
-$pass = "angelopez30";  // 👈 La clave que usaste para el FTP (Secrets)
-$db   = "if0_41587753_conectaya"; // 👈 El nombre COMPLETO de la DB que creaste en el panel
+// Detectar si estamos en el servidor local o en el hosting
+$is_localhost = ($_SERVER['REMOTE_ADDR'] === '127.0.0.1' || $_SERVER['REMOTE_ADDR'] === '::1');
 
+if ($is_localhost) {
+    // Configuración para pruebas en tu PC (XAMPP)
+    $host = "localhost";
+    $user = "root";
+    $pass = "";
+    $db   = "conectaya";
+} else {
+    // Configuración para producción en InfinityFree
+    $host = "sql111.infinityfree.com";
+    $user = "if0_41587753";
+    $pass = "angelopez30";
+    $db   = "if0_41587753_conectay";
+}
+
+// Intentar establecer la conexión
 $conexion = mysqli_connect($host, $user, $pass, $db);
 
+// Verificación de seguridad
 if (!$conexion) {
-    // Error detallado para depuración en el servidor
-    die("Error de conexión a ConectaYa (Remoto): " . mysqli_connect_error());
+    $ambiente = $is_localhost ? "Local" : "Remoto";
+    die("Error de conexión a ConectaYa ($ambiente): " . mysqli_connect_error());
 }
 
 // Forzar set de caracteres para evitar errores con tildes o Ñ
 mysqli_set_charset($conexion, "utf8mb4");
+
 ?>

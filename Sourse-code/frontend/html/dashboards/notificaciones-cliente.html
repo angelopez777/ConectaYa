@@ -6,7 +6,7 @@
     <title>Notificaciones | ConectaYa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/dashboard-cliente.css">
-    <link rel="stylesheet" href="../../css/notificaciones.css">
+    <link rel="stylesheet" href="../../css/notificaciones-cliente.css">
 </head>
 <body class="dark-theme">
 
@@ -26,7 +26,6 @@
                 <a href="mensajes-cliente.html" class="menu-item">
                     <i class="fas fa-envelope"></i> <span>Mensajes</span>
                 </a>
-                
                 <p class="menu-label">Gestión</p>
                 <a href="calendario-cliente.html" class="menu-item">
                     <i class="fas fa-calendar-alt"></i> <span>Calendario</span>
@@ -34,7 +33,7 @@
                 <a href="contratos-cliente.html" class="menu-item">
                     <i class="fas fa-file-invoice"></i> <span>Mis Contratos</span>
                 </a>
-                <a href="notificaciones.html" class="menu-item active">
+                <a href="notificaciones-cliente.html" class="menu-item active">
                     <i class="fas fa-bell"></i> <span>Notificaciones</span>
                 </a>
             </nav>
@@ -50,23 +49,28 @@
 
         <main class="main-content">
             <header class="content-header">
-                <h1 class="welcome-text">Centro de <span class="neon-text">Notificaciones</span></h1>
+                <div class="header-title-box">
+                    <h1 class="welcome-text">Centro de <span class="neon-text">Notificaciones</span></h1>
+                    <p class="subtitle-text">Gestiona tus alertas y avisos de servicios</p>
+                </div>
                 <div class="header-actions">
-                    <button id="marcar-leidas" class="btn-text">Marcar todas como leídas</button>
+                    <button id="btn-marcar-todo" class="btn-pill-outline">
+                        <i class="fas fa-check-double"></i> Leer todas
+                    </button>
                 </div>
             </header>
 
-            <section class="notifications-container">
-                <div id="lista-notificaciones" class="notifications-list">
-                    <div id="empty-notifications" class="empty-state">
-                        <i class="fas fa-bell-slash"></i>
-                        <p>No tienes notificaciones nuevas.</p>
+            <section class="notifications-wrapper">
+                <div id="lista-notificaciones" class="notifications-list-pill">
+                    <div id="loading-state" class="empty-state-pill">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Consultando base de datos...</p>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <script src="../../js/notificaciones.js"></script>
+    <script src="../../js/notificaciones-cliente.js"></script>
 </body>
 </html>

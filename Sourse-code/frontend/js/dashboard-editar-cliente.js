@@ -1,72 +1,66 @@
 /**
- * PROYECTO: ConectaYa
- * MODULO: dashboard-editar-cliente.js
- * PROTOCOLO: Escritura desde cero - Elite
+ * Lógica de frontend para Editar Perfil
+ * Mantiene compatibilidad total con actualizar-perfil.php
  */
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-editar-usuario');
     const inputFoto = document.getElementById('foto-input');
     const imgPreview = document.getElementById('img-preview');
     const paymentRadios = document.querySelectorAll('input[name="tipo_metodo"]');
 
-    // Control de paneles dinámicos
-    const gestionarPaneles = (metodo) => {
-        const pTarjeta = document.getElementById('fields-tarjeta');
-        const pTransferencia = document.getElementById('fields-transferencia');
-        
-        pTarjeta.classList.remove('active');
-        pTransferencia.classList.remove('active');
+    // Cambiar visibilidad de campos de pago
+    const togglePaymentFields = (metodo) => {
+        const divTarjeta = document.getElementById('fields-tarjeta');
+        const divTransfe = document.getElementById('fields-transferencia');
 
-        if (metodo === 'Tarjeta') pTarjeta.classList.add('active');
-        else if (metodo === 'Transferencia') pTransferencia.classList.add('active');
+        divTarjeta.classList.remove('active');
+        divTransfe.classList.remove('active');
+
+        if (metodo === 'Tarjeta') divTarjeta.classList.add('active');
+        if (metodo === 'Transferencia') divTransfe.classList.add('active');
     };
 
     paymentRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => gestionarPaneles(e.target.value));
+        radio.addEventListener('change', (e) => togglePaymentFields(e.target.value));
     });
 
-    // Envío de formulario
+    // Vista previa de imagen
+    inputFoto.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => imgPreview.src = e.target.result;
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Envío de datos
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         const fd = new FormData(form);
-        const metodoActivo = document.querySelector('input[name="tipo_metodo"]:checked')?.value;
-
-        // CRÍTICO: Unificar campos de Transferencia para el Backend
-        if (metodoActivo === 'Transferencia') {
-            const banco = document.getElementsByName('banco_nombre')[0].value;
-            const cuenta = document.getElementsByName('numero_transferencia')[0].value;
-            fd.set('proveedor', banco);
-            fd.set('numero_cuenta', cuenta);
+        
+        // Mapeo manual para compatibilidad con el backend (actualizar-perfil.php)
+        const metodo = document.querySelector('input[name="tipo_metodo"]:checked')?.value;
+        if (metodo === 'Transferencia') {
+            fd.set('proveedor', document.getElementsByName('banco_nombre')[0].value);
+            fd.set('numero_cuenta', document.getElementsByName('numero_transferencia')[0].value);
         }
 
         try {
-            // Ruta corregida para 3 niveles de profundidad
-            const res = await fetch('../../../backend/perfil/actualizar-perfil.php', { 
-                method: 'POST', 
-                body: fd 
+            const res = await fetch('../../../backend/perfil/actualizar-perfil.php', {
+                method: 'POST',
+                body: fd
             });
+            const data = await res.json();
 
-            const text = await res.text(); // Captura posible basura del servidor
-            
-            try {
-                const result = JSON.parse(text);
-                if (result.success) {
-                    window.location.href = 'dashboard-perfil-cliente.html';
-                } else {
-                    alert("Error del servidor: " + result.message);
-                }
-            } catch (jsonErr) {
-                console.error("Respuesta no es JSON:", text);
-                alert("Error de formato: El servidor envió una respuesta inválida.");
+            if (data.success) {
+                window.location.href = 'dashboard-perfil-cliente.html';
+            } else {
+                alert("Error al actualizar: " + data.message);
             }
-
-        } catch (err) {
-            console.error("Error de conexión:", err);
-            alert("No se pudo conectar con el servidor.");
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error crítico en la comunicación con el servidor.");
         }
     });
-
-    // Lógica de carga inicial (Mantén tu función cargarPerfil aquí abajo)
 });

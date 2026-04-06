@@ -1,96 +1,137 @@
-/* ESTILOS BASE DARK PREMIUM */
+/* DISEÑO PREMIUM CON BORDES REDONDEADOS TIPO DASHBOARD CLIENTE */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-body { background-color: #0a0a0c; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
 
-.edit-card-container { background: #121214; width: 100%; max-width: 550px; padding: 30px; border-radius: 20px; border: 1px solid #1e1e22; }
+body { 
+    background-color: #050505; 
+    color: #ffffff; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    padding: 20px;
+}
 
-/* HEADER */
-.card-header-internal { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-.back-btn { color: #a855f7; text-decoration: none; font-size: 0.9rem; }
-.logo-text { font-weight: bold; }
+/* LA TARJETA PRINCIPAL */
+.premium-card-edit { 
+    background: #0d0d0d; 
+    width: 100%;
+    max-width: 580px;
+    padding: 40px; 
+    border-radius: 30px; /* Bordes muy redondeados como el dashboard */
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+}
+
+.card-header-internal { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 35px; 
+}
+
+.back-btn { 
+    color: #a855f7; 
+    text-decoration: none; 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-text { font-weight: 800; font-size: 1.2rem; }
 .logo-text span { color: #a855f7; }
 
-/* FOTO Y CÁMARA: Posición ultra-ajustada */
-.profile-photo-section { display: flex; justify-content: center; margin-bottom: 25px; }
-.avatar-container { position: relative; }
+/* FOTO DE PERFIL */
+.profile-photo-section { display: flex; justify-content: center; margin-bottom: 30px; }
 .avatar-wrapper { 
-    width: 110px; 
-    height: 110px; 
+    width: 115px; 
+    height: 115px; 
     border-radius: 50%; 
-    border: 3px solid #a855f7; 
-    padding: 3px; 
+    border: 2px solid #a855f7; 
     position: relative;
+    padding: 5px;
+    background: #0d0d0d;
 }
 .avatar-wrapper img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
 .camera-btn { 
     position: absolute; 
-    bottom: -2px; /* Más cerca de la foto */
-    right: 5px; 
+    bottom: 2px; 
+    right: 2px; 
     background: #a855f7; 
-    color: white; 
-    width: 30px; 
-    height: 30px; 
+    width: 35px; 
+    height: 35px; 
     border-radius: 50%; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    border: 3px solid #121214;
     cursor: pointer;
-    transition: 0.2s;
+    border: 3px solid #0d0d0d;
+    color: white;
+    font-size: 0.9rem;
 }
-.camera-btn:hover { transform: scale(1.1); box-shadow: 0 0 10px #a855f7; }
 
-/* LABELS NEÓN (TODOS IGUALES) */
-.input-group label { 
+/* FORMULARIO: Aquí aplicamos el redondeo extremo de tus fotos */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.input-group.full { grid-column: span 2; }
+
+.input-group label, .section-label-neon { 
     display: block; 
     font-size: 0.75rem; 
     color: #a855f7; 
-    font-weight: bold; 
-    margin-bottom: 8px; 
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-weight: 800; 
+    margin-bottom: 10px; 
+    padding-left: 10px;
 }
 
-/* INPUTS GRIDS */
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.input-group.full { grid-column: span 2; }
 .input-group input { 
     width: 100%; 
-    background: #1e1e22; 
-    border: 1px solid #2d2d32; 
-    padding: 12px; 
-    border-radius: 10px; 
+    background: #151515; 
+    border: 1px solid #252525; 
+    padding: 16px 20px; 
+    border-radius: 50px; /* Estilo píldora / ultra redondeado */
     color: white; 
-    outline: none; 
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-/* BOTONES DE PAGO */
-.payment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; }
+.input-group input:focus { 
+    border-color: #a855f7; 
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
+}
+
+/* BOTONES DE PAGO REDONDEADOS */
+.payment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
 .pay-option input { display: none; }
 .pay-card-content { 
-    background: #1e1e22; 
-    border: 1px solid #2d2d32; 
-    padding: 12px; 
-    border-radius: 12px; 
+    background: #151515; 
+    border: 1px solid #252525; 
+    padding: 20px 10px; 
+    border-radius: 25px; /* Bordes suaves y redondeados */
     text-align: center; 
     cursor: pointer; 
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
-.pay-card-content i { display: block; margin-bottom: 5px; color: #888; font-size: 1.1rem; }
-.pay-card-content span { font-size: 0.8rem; color: #ccc; }
+
+.pay-card-content i { display: block; font-size: 1.3rem; margin-bottom: 8px; color: #555; }
+.pay-card-content span { font-size: 0.8rem; color: #888; font-weight: 600; }
 
 .pay-option input:checked + .pay-card-content { 
-    border: 2px solid #a855f7; 
-    background: rgba(168, 85, 247, 0.1); 
+    border-color: #a855f7; 
+    background: rgba(168, 85, 247, 0.05); 
 }
 .pay-option input:checked + .pay-card-content i,
 .pay-option input:checked + .pay-card-content span { color: white; }
 
-/* CAMPOS DINÁMICOS */
-.dynamic-fields { display: none; margin-top: 15px; }
-.dynamic-fields.active { display: block; animation: fadeIn 0.3s; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* SECCIONES DINÁMICAS */
+.dynamic-fields { display: none; margin-top: 25px; padding-top: 25px; border-top: 1px solid #1f1f1f; }
+.dynamic-fields.active { display: block; animation: fadeIn 0.4s ease; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* BOTÓN GUARDAR */
 .btn-main-save { 
@@ -98,13 +139,22 @@ body { background-color: #0a0a0c; color: white; display: flex; justify-content: 
     background: #a855f7; 
     color: white; 
     border: none; 
-    padding: 14px; 
-    border-radius: 12px; 
-    font-weight: bold; 
+    padding: 18px; 
+    border-radius: 50px; /* Botón píldora */
+    font-weight: 800; 
+    font-size: 1rem;
     cursor: pointer; 
-    margin-top: 25px; 
+    margin-top: 30px; 
+    box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-main-save:hover { 
+    background: #9333ea; 
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
 }
