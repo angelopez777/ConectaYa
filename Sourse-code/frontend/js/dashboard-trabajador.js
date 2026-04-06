@@ -1,52 +1,58 @@
 /**
- * PROYECTO: ConectaYa
- * RUTA: /frontend/js/dashboard-cliente.js
- * OBJETIVO: Cargar datos reales desde obtener-datos-dashboard.php
+ * Control de Dashboard Trabajador - ConectaYa
+ * Desarrollado por Angel Lopez
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Inicializar componentes de UI
+    initDashboard();
     
-    const cargarDatosUsuario = async () => {
-        try {
-            // Llamada al backend (usando la ruta corregida de 3 niveles)
-            const response = await fetch('../../../backend/obtener-datos-dashboard.php');
-            
-            if (!response.ok) {
-                console.error("Error 404: No se encontró el archivo PHP de datos");
-                return;
-            }
-
-            const data = await response.json();
-
-            // 1. Inyectar el nombre dinámico en el saludo
-            const nameDisplay = document.getElementById('user-name');
-            if (data.nombre && nameDisplay) {
-                // Tomamos el primer nombre para un estilo más amigable
-                const primerNombre = data.nombre.split(' ')[0];
-                nameDisplay.textContent = primerNombre;
-            }
-
-            // 2. Actualizar contadores de estadísticas
-            const solElem = document.getElementById('solicitudes-val');
-            const rateElem = document.getElementById('rating-val');
-            
-            if (solElem) solElem.textContent = data.solicitudes || 0;
-            if (rateElem) rateElem.textContent = data.calificacion || "0.0";
-
-            // 3. Actualizar badge de mensajes en el sidebar
-            const msgBadge = document.getElementById('msg-badge');
-            if (msgBadge) {
-                msgBadge.textContent = data.mensajes_nuevos || 0;
-                msgBadge.style.display = (data.mensajes_nuevos > 0) ? 'block' : 'none';
-            }
-
-        } catch (error) {
-            console.error("Fallo crítico en la carga del Dashboard:", error);
-            const nameDisplay = document.getElementById('user-name');
-            if (nameDisplay) nameDisplay.textContent = "Usuario";
-        }
-    };
-
-    // Ejecutar la carga al iniciar
-    cargarDatosUsuario();
+    // 2. Cargar datos desde el backend
+    fetchDashboardData();
 });
+
+/**
+ * Realiza la petición al backend para obtener datos de la tabla 'trabajador' y 'resenas'
+ */
+async function fetchDashboardData() {
+    try {
+        // Nota: El archivo obtener-datos-dashboard.php debe existir en /backend/
+        const response = await fetch('../../../backend/obtener-datos-dashboard.php');
+        const data = await response.json();
+
+        if (data.success) {
+            updateUI(data);
+        }
+    } catch (error) {
+        console.error("Error al sincronizar con ConectaYa DB:", error);
+    }
+}
+
+/**
+ * Actualiza los elementos del DOM con datos reales
+ * @param {Object} data - Información proveniente de la base de datos
+ */
+function updateUI(data) {
+    const userName = document.getElementById('user-name');
+    const servicesCount = document.getElementById('services-count');
+    const ratingAvg = document.getElementById('rating-avg');
+
+    if (userName) userName.innerText = data.nombre;
+    if (servicesCount) servicesCount.innerText = data.total_servicios || 0;
+    if (ratingAvg) ratingAvg.innerText = parseFloat(data.calificacion).toFixed(1) || "0.0";
+}
+
+/**
+ * Manejo de eventos de navegación y cambio de rol
+ */
+function initDashboard() {
+    const btnSwitch = document.querySelector('.btn-role-toggle');
+    
+    if (btnSwitch) {
+        btnSwitch.addEventListener('click', () => {
+            // Animación de transición antes del redirect
+            document.body.style.opacity = '0.5';
+            window.location.href = 'inicio-cliente.html';
+        });
+    }
+}
