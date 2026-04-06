@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConectaYa | Mis Contratos Profesionales</title>
+    <title>ConectaYa | Panel de Control Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/dashboard-trabajador.css">
-    <link rel="stylesheet" href="../../css/contratos-trabajador.css">
+    <link rel="stylesheet" href="../../css/inicio-trabajador.css">
 </head>
 <body class="dark-theme">
 
@@ -18,23 +18,23 @@
             </div>
             
             <nav class="sidebar-menu">
-                <p class="menu-label">PRINCIPAL</p>
-                <a href="inicio-trabajador.html" class="menu-item">
-                    <i class="fas fa-chart-line"></i> <span>Mi Actividad</span>
+                <p class="menu-label">PANEL PROFESIONAL</p>
+                <a href="inicio-trabajador.html" class="menu-item active">
+                    <i class="fas fa-chart-pie"></i> <span>Resumen</span>
                 </a>
                 <a href="dashboard-perfil-trabajador.html" class="menu-item">
-                    <i class="fas fa-id-card"></i> <span>Perfil Profesional</span>
+                    <i class="fas fa-briefcase"></i> <span>Mi Perfil</span>
                 </a>
                 <a href="mensajes-cliente.html" class="menu-item">
-                    <i class="fas fa-comments"></i> <span>Mensajes</span>
+                    <i class="fas fa-comment-dots"></i> <span>Mensajes</span>
                 </a>
                 
-                <p class="menu-label">GESTIÓN DE SERVICIOS</p>
+                <p class="menu-label">ADMINISTRACIÓN</p>
                 <a href="calendario-trabajador.html" class="menu-item">
-                    <i class="fas fa-calendar-check"></i> <span>Mi Agenda</span>
+                    <i class="fas fa-calendar-day"></i> <span>Agenda</span>
                 </a>
-                <a href="contratos-trabajador.html" class="menu-item active">
-                    <i class="fas fa-file-signature"></i> <span>Contratos Recibidos</span>
+                <a href="contratos-trabajador.html" class="menu-item">
+                    <i class="fas fa-file-contract"></i> <span>Contratos</span>
                 </a>
                 <a href="notificaciones.html" class="menu-item">
                     <i class="fas fa-bell"></i> <span>Notificaciones</span>
@@ -43,61 +43,60 @@
 
             <div class="sidebar-bottom">
                 <button class="btn-role-toggle" onclick="window.location.href='inicio-cliente.html'">
-                    <i class="fas fa-user-tie"></i> Cambiar a Cliente
+                    <i class="fas fa-user"></i> Cambiar a Cliente
                 </button>
                 <a href="../../../backend/config/logout.php" class="logout-link">
-                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    <i class="fas fa-power-off"></i> Cerrar Sesión
                 </a>
             </div>
         </aside>
 
         <main class="main-content">
             <header class="content-header-premium">
-                <div class="header-info">
-                    <h1 class="welcome-text">Panel de <span class="neon-text">Contratos Profesionales</span></h1>
-                    <p class="header-desc">Gestiona tus acuerdos legales y estados de pago con tus clientes.</p>
+                <div class="header-welcome">
+                    <h1 class="welcome-text">Bienvenido, <span class="neon-text" id="worker-name">Profesional</span></h1>
+                    <p class="header-desc">Aquí tienes el resumen de tu rendimiento y próximos servicios.</p>
                 </div>
-                <div class="header-stats-mini">
-                    <div class="mini-stat">
-                        <span class="label">Activos</span>
-                        <span class="value neon-text" id="count-active">0</span>
+                <div class="header-date" id="current-date">
                     </div>
-                </div>
             </header>
 
-            <section class="contracts-section">
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="stat-info">
+                        <h3>Ganancias Mes</h3>
+                        <p class="stat-value" id="monthly-earnings">$0.00</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-check-double"></i></div>
+                    <div class="stat-info">
+                        <h3>Completados</h3>
+                        <p class="stat-value" id="completed-tasks">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                    <div class="stat-info">
+                        <h3>Calificación</h3>
+                        <p class="stat-value" id="rating">0.0</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-section">
                 <div class="premium-card">
                     <div class="card-header-premium">
-                        <h3><i class="fas fa-briefcase"></i> Historial de Acuerdos Laborales</h3>
-                        <div class="header-actions">
-                            <button class="btn-icon-neon" id="btn-refresh-contratos" title="Sincronizar con DB">
-                                <i class="fas fa-sync-alt"></i>
-                            </button>
-                        </div>
+                        <h3><i class="fas fa-clock"></i> Próximos Servicios Programados</h3>
+                        <a href="calendario-trabajador.html" class="link-neon">Ver agenda completa</a>
                     </div>
-
-                    <div id="contracts-manager" class="manager-body">
-                        <div id="table-view" class="table-scroll-premium" style="display: none;">
-                            <table class="premium-table">
-                                <thead>
-                                    <tr>
-                                        <th>Cliente</th>
-                                        <th>Servicio Pactado</th>
-                                        <th>Fecha de Ejecución</th>
-                                        <th>Presupuesto</th>
-                                        <th>Estado Legal</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="lista-contratos-trabajador">
-                                    </tbody>
-                            </table>
-                        </div>
-
-                        <div id="status-view" class="empty-state-premium">
-                            <div id="status-spinner" class="spinner-neon"></div>
-                            <i id="status-icon" class="fas fa-file-contract empty-icon"></i>
-                            <p id="status-text">Cargando acuerdos desde la base de datos...</p>
+                    <div class="manager-body">
+                        <div id="pending-services-list" class="services-container">
+                            <div class="loader-container">
+                                <div class="spinner-neon"></div>
+                                <p>Sincronizando con ConectaYa...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,6 +104,6 @@
         </main>
     </div>
 
-    <script src="../../js/contratos-trabajador.js"></script>
+    <script src="../../js/inicio-trabajador.js"></script>
 </body>
 </html>
