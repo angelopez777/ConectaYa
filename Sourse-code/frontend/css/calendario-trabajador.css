@@ -1,0 +1,95 @@
+/* Personalización de FullCalendar para Dark Premium */
+:root {
+    --fc-border-color: rgba(168, 85, 247, 0.2);
+    --fc-daygrid-event-dot-width: 10px;
+    --fc-event-bg-color: #a855f7;
+    --fc-event-border-color: #a855f7;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+    height: calc(100vh - 180px);
+}
+
+.calendar-card-premium {
+    background: #121214;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilización del calendario */
+.fc .fc-toolbar-title {
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+
+.fc .fc-button-primary {
+    background-color: transparent;
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    transition: 0.3s;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: var(--neon-purple);
+    color: #fff;
+    box-shadow: 0 0 10px var(--neon-purple);
+}
+
+/* Panel lateral de gestión */
+.appointment-panel {
+    background: #121214;
+    border-radius: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--neon-purple);
+}
+
+.placeholder-content {
+    text-align: center;
+    color: #555;
+    margin-top: 50px;
+}
+
+.placeholder-content i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Estilos de eventos dentro del panel */
+.service-info-card {
+    background: rgba(168, 85, 247, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid var(--neon-purple);
+}
+
+.btn-confirm {
+    background: var(--neon-purple);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 0 10px var(--neon-purple-dim);
+}
